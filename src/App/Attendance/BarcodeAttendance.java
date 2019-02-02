@@ -115,6 +115,9 @@ public class BarcodeAttendance extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        msg = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -188,7 +191,7 @@ public class BarcodeAttendance extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DataBase Preveiw", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18))); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel16.setText("Scan ID");
+        jLabel16.setText("Search By ID");
 
         jTextField9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -282,33 +285,66 @@ public class BarcodeAttendance extends javax.swing.JFrame {
             }
         });
 
+        msg.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        msg.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jTextField10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField10KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField10KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField10KeyTyped(evt);
+            }
+        });
+
+        jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jLabel17.setText("Scan ID");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(299, 299, 299)
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2)
-                .addContainerGap())
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(msg, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel16)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextField9)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField10)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(msg, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -359,47 +395,7 @@ public class BarcodeAttendance extends javax.swing.JFrame {
 
     private void jTextField9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyReleased
 
-        //KeyRelased
         
-//         if(evt.getKeyCode()==KeyEvent.VK_ENTER)
-//        {
-//        DefaultTableModel table = new DefaultTableModel();
-//        
-//        table.addColumn("Student ID");
-//        table.addColumn("Last Attendance Date");
-//        
-//        try
-//        {
-//            
-//            String sql1 = "INSERT INTO student_attendance(StudentId,AtDate)"
-//                    + "VALUES('"+jTextField9.getText()+"','"+new Timestamp(System.currentTimeMillis())+"')";
-//            Statement st = DAC.ConnectDb().createStatement();
-//            ResultSet rs = st.executeQuery(sql1);
-//            
-//            while(rs.next())
-//            {
-//                table.addRow(new Object[]{
-//                    //rs.getString(1),
-//                    rs.getString(2),
-//                    rs.getString(3),
-////                    rs.getString(4),
-////                    rs.getString(5),
-////                    rs.getString(6),
-////                    rs.getString(7),
-////                    rs.getString(8),
-////                    rs.getString(9),
-////                    rs.getString(10),
-////                    rs.getString(11),
-//                    
-//                        
-//                });
-//            }
-//            jTable1.setModel(table);
-//        }
-//        catch(Exception e){
-//    
-//}
-//        }
 
     }//GEN-LAST:event_jTextField9KeyReleased
 
@@ -461,52 +457,92 @@ public class BarcodeAttendance extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-       if(evt.getKeyCode()==KeyEvent.VK_ENTER)
-        {
-        DefaultTableModel table = new DefaultTableModel();
-        
-        table.addColumn("Student ID");
-        table.addColumn("Last Attendance Date");
-        
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/nuwana","root","");
             
+            Statement st = DAC.ConnectDb().createStatement();
             String sql1 = "INSERT INTO student_attendance(StudentId,AtDate)"
                     + "VALUES('"+jTextField9.getText()+"','"+new Timestamp(System.currentTimeMillis())+"')";
-            Statement st = DAC.ConnectDb().createStatement();
-            ResultSet rs = st.executeQuery(sql1);
-            
-            while(rs.next())
-            {
-                table.addRow(new Object[]{
-                    //rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(3),
-//                    rs.getString(4),
-//                    rs.getString(5),
-//                    rs.getString(6),
-//                    rs.getString(7),
-//                    rs.getString(8),
-//                    rs.getString(9),
-//                    rs.getString(10),
-//                    rs.getString(11),
-                    
-                        
-                });
-            }
-            jTable1.setModel(table);
-            JOptionPane.showMessageDialog(rootPane, "Succescc");
+            //ResultSet rs = st.executeQuery(sql1);
+            int n1 = st.executeUpdate(sql1);
+            if(n1>0){
+            //String sql2="INSERT into parent(pname,StudentID,ptelNo)VALUES('"+parentname+"','"+parenttelno+"','"+createid+"')";
+            //int A = stmt.executeUpdate(sql2);
+         
+        msg.setText("Succesfully the Attendance");
+         //JOptionPane.showMessageDialog(rootPane, "Registration Successfully");
+         //Student_Register_Btn.setVisible(false);
+        }
+            //jTable1.setModel(table);
+            //JOptionPane.showMessageDialog(rootPane, "Succescc");
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e);
 }
-        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+       
     }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jTextField10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField10KeyPressed
+
+    private void jTextField10KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyReleased
+        
+        String logid,atdate;
+            try {
+                String str1=jTextField9.getText();
+                String sql="SELECT * FROM student_attendance WHERE StudentId=?";
+//                String sql2="SELECT a.*, b.AccNo, b.PaymentID FROM" +
+//                            " users a" +
+//                            " INNER JOIN" +
+//                            " admin b" +
+//                            " ON a.LogId=b.LogAdminId" +
+//                            " WHERE "+option.trim()+"=?";
+                           
+                pst=conn.prepareStatement(sql);
+                
+                pst.setString(1, str1);
+                
+                ResultSet rs=pst.executeQuery();
+                dtm = (DefaultTableModel) jTable1.getModel();
+                dtm.setRowCount(0);
+                
+                if(rs.next()){
+                    do {                        
+                        
+                        logid=rs.getString("StudentId");
+                        atdate=rs.getString("AtDate");
+//                        gender=rs.getString("Gender");
+//                        bdate=rs.getString("No");
+//                        no=rs.getString("Street");
+//                        street=rs.getString("City");
+//                        city=rs.getString("DOB");
+//                        nic=rs.getString("PhoneNo");
+//                        telno=rs.getString("NIC");
+//                        email=rs.getString("Email");
+//                        logid=rs.getString("LogId");
+//                        usertype=rs.getString("UserType");
+//                        accno=rs.getString("AccNo");
+//                        payid=rs.getString("PaymentID");
+                        
+                        dtm.addRow(new Object[]{logid,atdate});
+                    } while (rs.next());
+ 
+                }
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, e.getMessage());
+            }
+    }//GEN-LAST:event_jTextField10KeyReleased
+
+    private void jTextField10KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField10KeyTyped
 
     /**
      * @param args the command line arguments
@@ -548,6 +584,7 @@ public class BarcodeAttendance extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -558,6 +595,8 @@ public class BarcodeAttendance extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel msg;
     // End of variables declaration//GEN-END:variables
 }
