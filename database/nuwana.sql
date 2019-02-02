@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 30, 2019 at 09:36 PM
+-- Generation Time: Feb 02, 2019 at 05:39 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -281,6 +281,28 @@ CREATE TABLE IF NOT EXISTS `student` (
 INSERT INTO `student` (`UserId`, `StudentId`, `FName`, `LName`, `Gender`, `No`, `Street`, `City`, `DOB`, `PhoneNo`, `NIC`, `Email`, `LogClerkId`) VALUES
 (1, 'STD-8-001', 'sandaru', 'imal', 'Male', '34', 'badulla', 'haliela', '2019-01-04', 334444, '23322', 'sandaru', '6'),
 (5, 'STD-987', 'qq', 'qqqq', 'Female', '22', 'ss', 'dd', '2019-01-18', 33, '43', 'ddf', 'CLK-003');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_attendance`
+--
+
+DROP TABLE IF EXISTS `student_attendance`;
+CREATE TABLE IF NOT EXISTS `student_attendance` (
+  `UserId` int(11) NOT NULL AUTO_INCREMENT,
+  `StudentId` varchar(50) NOT NULL,
+  `AtDate` date NOT NULL,
+  UNIQUE KEY `UserId` (`UserId`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student_attendance`
+--
+
+INSERT INTO `student_attendance` (`UserId`, `StudentId`, `AtDate`) VALUES
+(1, 'STD-8-001', '2019-02-02'),
+(2, 'STD-9-005', '2019-02-02');
 
 -- --------------------------------------------------------
 
