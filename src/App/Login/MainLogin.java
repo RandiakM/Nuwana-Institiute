@@ -92,7 +92,7 @@ public class MainLogin extends javax.swing.JFrame {
         jLabel5.setText("USER ID");
 
         jTextField1.setBackground(java.awt.Color.lightGray);
-        jTextField1.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(51, 51, 51));
         jTextField1.setToolTipText("");
         jTextField1.setBorder(null);
@@ -110,6 +110,7 @@ public class MainLogin extends javax.swing.JFrame {
         jLabel6.setText("PASSWORD");
 
         jPasswordField1.setBackground(java.awt.Color.lightGray);
+        jPasswordField1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(51, 51, 51));
         jPasswordField1.setBorder(null);
 

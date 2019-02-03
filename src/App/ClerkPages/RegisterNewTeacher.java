@@ -71,7 +71,7 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        Admin_Register_Btn = new javax.swing.JButton();
+        Teacher_Register_Btn = new javax.swing.JButton();
         Admin_Clear_btn = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
@@ -135,51 +135,45 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(189, 183, 107));
 
-        jPanel2.setBackground(java.awt.Color.darkGray);
+        jPanel2.setBackground(java.awt.Color.lightGray);
 
         jLabel1.setBackground(new java.awt.Color(97, 212, 195));
         jLabel1.setFont(new java.awt.Font("Engravers MT", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("NUWANA");
 
         jLabel2.setBackground(new java.awt.Color(97, 212, 195));
         jLabel2.setFont(new java.awt.Font("Engravers MT", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("INSTITUTE");
 
         jLabel4.setBackground(new java.awt.Color(97, 212, 195));
         jLabel4.setFont(new java.awt.Font("Edwardian Script ITC", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("\"Beyond the Norm\"");
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
+        jSeparator1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         jSeparator3.setBackground(new java.awt.Color(36, 47, 65));
         jSeparator3.setForeground(new java.awt.Color(36, 47, 65));
-        jSeparator3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        jSeparator3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                        .addGap(10, 10, 10)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,13 +195,13 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(36, 47, 65));
         jLabel3.setText("Register New Teacher");
 
-        Admin_Register_Btn.setBackground(new java.awt.Color(255, 255, 255));
-        Admin_Register_Btn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        Admin_Register_Btn.setText("Register");
-        Admin_Register_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Admin_Register_Btn.addActionListener(new java.awt.event.ActionListener() {
+        Teacher_Register_Btn.setBackground(new java.awt.Color(255, 255, 255));
+        Teacher_Register_Btn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        Teacher_Register_Btn.setText("Register");
+        Teacher_Register_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Teacher_Register_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Admin_Register_BtnActionPerformed(evt);
+                Teacher_Register_BtnActionPerformed(evt);
             }
         });
 
@@ -221,70 +215,78 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
             }
         });
 
-        jPanel3.setBackground(java.awt.Color.darkGray);
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Basic Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel3.setBackground(java.awt.Color.lightGray);
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Basic Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18))); // NOI18N
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Last Name");
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("First Name");
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Gender");
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("No");
 
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel9.setText("Street");
 
         jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Date of Birth");
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Tel No");
 
-        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel13.setText("NIC");
 
-        jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel14.setText("Email");
 
-        jRadioButton1.setBackground(java.awt.Color.darkGray);
+        jTextField1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jRadioButton1.setBackground(java.awt.Color.lightGray);
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton1.setText("Male");
 
-        jRadioButton2.setBackground(java.awt.Color.darkGray);
+        jRadioButton2.setBackground(java.awt.Color.lightGray);
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton2.setText("Female");
 
+        jDateChooser1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
         jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("User ID");
 
+        jTextField9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jTextField9.setText("TEA-");
 
-        jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel17.setText("Acc No");
 
+        jTextField10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
         jPanel5.setBackground(new java.awt.Color(189, 183, 107));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Grade & Subjects", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18), java.awt.Color.darkGray)); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Grade & Subjects", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18))); // NOI18N
 
         maths.setBackground(new java.awt.Color(189, 183, 107));
         maths.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
@@ -351,7 +353,7 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
 
         jCheckBox1.setBackground(new java.awt.Color(189, 183, 107));
         jCheckBox1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jCheckBox1.setText("Physics(rev)");
+        jCheckBox1.setText("Physics(Rev)");
 
         jCheckBox2.setBackground(new java.awt.Color(189, 183, 107));
         jCheckBox2.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
@@ -379,15 +381,20 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
 
         jCheckBox8.setBackground(new java.awt.Color(189, 183, 107));
         jCheckBox8.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jCheckBox8.setText("C.Maths(rev)");
+        jCheckBox8.setText("C.Maths(Rev)");
+        jCheckBox8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox8ActionPerformed(evt);
+            }
+        });
 
         jCheckBox9.setBackground(new java.awt.Color(189, 183, 107));
         jCheckBox9.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jCheckBox9.setText("Biology(rev)");
+        jCheckBox9.setText("Biology(Rev)");
 
         jCheckBox10.setBackground(new java.awt.Color(189, 183, 107));
         jCheckBox10.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jCheckBox10.setText("Chemistry(rev)");
+        jCheckBox10.setText("Chemistry(Rev)");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -410,7 +417,7 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cmaths, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(biology, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(chemistry, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+                    .addComponent(chemistry, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                     .addComponent(physics, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jCheckBox7)
                     .addComponent(jCheckBox9)
@@ -459,10 +466,10 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel19.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel19.setText("Payment ID");
 
+        jTextField11.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jTextField11.setText("PAY-TEA-");
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -471,12 +478,12 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
         });
 
         jLabel20.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Grade");
+
+        jTextField12.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
 
         jLabel18.setBackground(new java.awt.Color(51, 51, 51));
         jLabel18.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("City");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -485,7 +492,7 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -496,19 +503,27 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
                             .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                             .addComponent(jTextField7)
                             .addComponent(jTextField8))
-                        .addGap(27, 27, 27)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(27, 27, 27)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
+                                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(27, 27, 27))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel19)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(2, 2, 2)
+                                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
@@ -524,7 +539,7 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -546,84 +561,92 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
                         .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(13, 13, 13)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, Short.MAX_VALUE)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jRadioButton2)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                            .addComponent(jTextField9))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField1)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                            .addComponent(jTextField2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jRadioButton2))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(12, 12, 12)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(7, 7, 7)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(jLabel20)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addGap(21, 21, 21)
+                                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField6)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(11, 11, 11)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(29, 29, 29))))
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Basic Details", jPanel3);
 
-        jPanel4.setBackground(java.awt.Color.darkGray);
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Change Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel4.setBackground(java.awt.Color.lightGray);
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Change Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18))); // NOI18N
         jPanel4.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel21.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("New Password");
+
+        newPassword.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
 
         Admin_Register_Btn2.setBackground(new java.awt.Color(255, 255, 255));
         Admin_Register_Btn2.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
@@ -636,8 +659,9 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
         });
 
         jLabel23.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Confirm Password");
+
+        rePassword.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -655,7 +679,7 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
                             .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 861, Short.MAX_VALUE)
+                            .addComponent(newPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
                             .addComponent(rePassword))))
                 .addGap(220, 220, 220))
         );
@@ -688,23 +712,24 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(216, 216, 216)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addGap(279, 279, 279)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTabbedPane1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(msgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(140, 140, 140)
-                                        .addComponent(Admin_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(msgLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(73, 73, 73)
+                                        .addComponent(msgLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(msgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(59, 59, 59)
+                                        .addComponent(Teacher_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
-                                .addComponent(Admin_Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))))
+                                .addComponent(Admin_Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -719,7 +744,7 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(msgLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Admin_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Teacher_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(msgLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51))
@@ -746,7 +771,7 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Admin_Register_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_Register_BtnActionPerformed
+    private void Teacher_Register_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Teacher_Register_BtnActionPerformed
         
         //basic details
         String teacherid=jTextField9.getText();
@@ -768,8 +793,8 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
         //Change Password
         //String uid=UserID.getText();
         //String newusername=newUserName.getText();
-        //String newpassword=String.valueOf(newPassword.getPassword());
-        //String repassword=String.valueOf(rePassword.getPassword());
+        String newpassword=String.valueOf(newPassword.getPassword());
+        String repassword=String.valueOf(rePassword.getPassword());
       ///////////////////////////////////////////////////////////////////////////////////////////// 
 
         
@@ -782,7 +807,7 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/nuwana?","root","");
         Statement stmt = con.createStatement();
         
-       /* if(newpassword.length()>=6 || !newpassword.contains("")){
+        if(newpassword.length()>=6 || !newpassword.contains("")){
         
         AESencrp ePass= new AESencrp();
         
@@ -805,23 +830,25 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
         }
          else{
              msgLabel.setText("Enter a Strong password");
-         } */        
+         }        
           
         String query1 = "SELECT  LogClerkId from clerk";
         ResultSet rs = stmt.executeQuery(query1);
         rs.next();
         String clkid = rs.getString("LogClerkId");
    
-        String sql1="INSERT INTO teacher(LogTeacherId, FName, LName, Gender,No,Street, City ,DOB,PhoneNO, Grade, NIC, Email, AccNo, PaymentID, LogClerkId) VALUES ('"+teacherid+"','"+fname+"','"+lname+"','"+gender+"','"+no+"','"+street+"','"+city+"','"+bdate+"','"+telno+"','"+grade+"','"+nic+"','"+email+"','"+accno+"','"+payid+"','"+clkid+"')";
+        String sql1="INSERT INTO teacher(LogTeacherId, FName, LName, Gender,No,Street, City ,DOB,PhoneNO, Grade, NIC, Email, AccNo, PaymentID, LogClerkId) VALUES "
+                + "('"+teacherid+"','"+fname+"','"+lname+"','"+gender+"','"+no+"','"+street+"','"+city+"','"+bdate+"','"+telno+"','"+grade+"','"+nic+"','"+email+"','"+accno+"','"+payid+"','"+clkid+"')";
         int n1 = stmt.executeUpdate(sql1);
         
         if(n1>0){   
             
-       // String sql3="INSERT INTO login(LogId, Password) VALUES ('"teacherid"','"+newpassword+"')"; 
-       // int B = stmt.executeUpdate(sql3);      
+        String sql3="INSERT INTO login(LogId, Password,Activated) VALUES "
+                + "('"+teacherid+"','"+newpassword+"','"+"1"+"')"; 
+        int B = stmt.executeUpdate(sql3);      
       
-        String sql2="INSERT INTO users(FName, LName, Gender, No, Street, City,DOB, PhoneNo,NIC,Email,LogId) "
-                + "VALUES ('"+fname+"','"+lname+"','"+gender+"','"+no+"','"+street+"','"+city+"','"+bdate+"','"+telno+"','"+nic+"','"+email+"','"+teacherid+"')";
+        String sql2="INSERT INTO users(FName, LName, Gender, No, Street, City,DOB, PhoneNo,NIC,Email,LogId,UserType) "
+                + "VALUES ('"+fname+"','"+lname+"','"+gender+"','"+no+"','"+street+"','"+city+"','"+bdate+"','"+telno+"','"+nic+"','"+email+"','"+teacherid+"','"+"Teacher"+"')";
          int A = stmt.executeUpdate(sql2);
            
             String accounting = null;
@@ -840,67 +867,69 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
       
           
         if(maths.isSelected()){
-        String q1 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+maths+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q1 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+maths+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int a = stmt.executeUpdate(q1);
         }
         else if(science.isSelected()){
-        String q2 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+science+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q2 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+science+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int b = stmt.executeUpdate(q2);      
         } 
         else if(english.isSelected()){
-        String q3 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+english+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q3 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+english+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int c = stmt.executeUpdate(q3);
         }
         else if(jCheckBox2.isSelected()){
-        String q4 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+sinhala+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q4 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+sinhala+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int d = stmt.executeUpdate(q4);
         } 
         else if(jCheckBox3.isSelected()){
-        String q5 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+logic+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q5 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+logic+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int e = stmt.executeUpdate(q5);
         }
         else if(jCheckBox4.isSelected()){
-        String q6 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+history+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q6 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+history+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int f = stmt.executeUpdate(q6);
         } 
         else if(jCheckBox5.isSelected()){
-        String q7 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+accounting+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q7 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+accounting+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int g = stmt.executeUpdate(q7);
         }
         else if(jCheckBox6.isSelected()){
-        String q8 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+econ+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q8 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+econ+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int h = stmt.executeUpdate(q8);
         }
         else if(jCheckBox7.isSelected()){
-        String q9 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+commerce+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q9 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+commerce+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int i = stmt.executeUpdate(q9);
         } 
         else if(jCheckBox8.isSelected()&& cmaths.isSelected()){
-        String q10 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+cmaths+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+cmaths_revision+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q10 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+cmaths+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+cmaths_revision+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int j = stmt.executeUpdate(q10);
         }
         else if(jCheckBox9.isSelected()&& biology.isSelected()){
-        String q11 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+biology+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+biology_revision+\"','\"+null+\"','\"+null+\"')";
+        String q11 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+biology+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+biology_revision+\"','\"+null+\"','\"+null+\"')";
         int k = stmt.executeUpdate(q11);
         }
         else if(jCheckBox10.isSelected()&& chemistry.isSelected() ){
-        String q12 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+chemistry+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+chemistry_revision+\"','\"+null+\"')";
+        String q12 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+chemistry+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+chemistry_revision+\"','\"+null+\"')";
         int l = stmt.executeUpdate(q12);
         }
         else{
-        String q13 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+physics+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+physics_revision+\"')";
+        String q13 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+physics+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+physics_revision+\"')";
         int m = stmt.executeUpdate(q13);
         }
      
-        JOptionPane.showMessageDialog(rootPane,"Registration Successfully.....");
+        msgLabel.setText("Succesfully aded data to the teacher table");
+        JOptionPane.showMessageDialog(rootPane, "Registration Successfully.");
+        Teacher_Register_Btn.setVisible(false);
         }
         else{
-        JOptionPane.showMessageDialog(rootPane,"Registration not Successfull....."); 
+        JOptionPane.showMessageDialog(rootPane, "Error While Registraion."); 
         }
       
         } catch (Exception e) {
      
-        JOptionPane.showMessageDialog(rootPane,e);
+        JOptionPane.showMessageDialog(rootPane, e);
         }
       
     
@@ -912,7 +941,7 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
         
        
      
-    }//GEN-LAST:event_Admin_Register_BtnActionPerformed
+    }//GEN-LAST:event_Teacher_Register_BtnActionPerformed
 
     private void Admin_Clear_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_Clear_btnActionPerformed
         
@@ -976,6 +1005,10 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField11ActionPerformed
+
+    private void jCheckBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1078,8 +1111,8 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Admin_Clear_btn;
-    private javax.swing.JButton Admin_Register_Btn;
     private javax.swing.JButton Admin_Register_Btn2;
+    private javax.swing.JButton Teacher_Register_Btn;
     private javax.swing.JCheckBox biology;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chemistry;

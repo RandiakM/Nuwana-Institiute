@@ -271,6 +271,8 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
         jRadioButton2.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jRadioButton2.setText("Female");
 
+        jDateChooser1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
         jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel15.setText("User ID");
 
@@ -582,18 +584,15 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
                             .addComponent(jRadioButton2))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel18)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(12, 12, 12))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
@@ -646,6 +645,8 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel21.setText("New Password");
 
+        newPassword.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
         Admin_Register_Btn2.setBackground(new java.awt.Color(255, 255, 255));
         Admin_Register_Btn2.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         Admin_Register_Btn2.setText("Clear");
@@ -658,6 +659,8 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
 
         jLabel23.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel23.setText("Confirm Password");
+
+        rePassword.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -789,8 +792,8 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
         //Change Password
         //String uid=UserID.getText();
         //String newusername=newUserName.getText();
-        //String newpassword=String.valueOf(newPassword.getPassword());
-        //String repassword=String.valueOf(rePassword.getPassword());
+        String newpassword=String.valueOf(newPassword.getPassword());
+        String repassword=String.valueOf(rePassword.getPassword());
       ///////////////////////////////////////////////////////////////////////////////////////////// 
 
         
@@ -833,16 +836,18 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
         rs.next();
         String clkid = rs.getString("LogClerkId");
    
-        String sql1="INSERT INTO teacher(LogTeacherId, FName, LName, Gender,No,Street, City ,DOB,PhoneNO, Grade, NIC, Email, AccNo, PaymentID, LogClerkId) VALUES ('"+teacherid+"','"+fname+"','"+lname+"','"+gender+"','"+no+"','"+street+"','"+city+"','"+bdate+"','"+telno+"','"+grade+"','"+nic+"','"+email+"','"+accno+"','"+payid+"','"+clkid+"')";
+        String sql1="INSERT INTO teacher(LogTeacherId, FName, LName, Gender,No,Street, City ,DOB,PhoneNO, Grade, NIC, Email, AccNo, PaymentID, LogClerkId) VALUES "
+                + "('"+teacherid+"','"+fname+"','"+lname+"','"+gender+"','"+no+"','"+street+"','"+city+"','"+bdate+"','"+telno+"','"+grade+"','"+nic+"','"+email+"','"+accno+"','"+payid+"','"+clkid+"')";
         int n1 = stmt.executeUpdate(sql1);
         
         if(n1>0){   
             
-       // String sql3="INSERT INTO login(LogId, Password) VALUES ('"teacherid"','"+newpassword+"')"; 
-       // int B = stmt.executeUpdate(sql3);      
+        String sql3="INSERT INTO login(LogId, Password,Activated) VALUES "
+                + "('"+teacherid+"','"+newpassword+"','"+"1"+"')"; 
+        int B = stmt.executeUpdate(sql3);      
       
-        String sql2="INSERT INTO users(FName, LName, Gender, No, Street, City,DOB, PhoneNo,NIC,Email,LogId) "
-                + "VALUES ('"+fname+"','"+lname+"','"+gender+"','"+no+"','"+street+"','"+city+"','"+bdate+"','"+telno+"','"+nic+"','"+email+"','"+teacherid+"')";
+        String sql2="INSERT INTO users(FName, LName, Gender, No, Street, City,DOB, PhoneNo,NIC,Email,LogId,UserType) "
+                + "VALUES ('"+fname+"','"+lname+"','"+gender+"','"+no+"','"+street+"','"+city+"','"+bdate+"','"+telno+"','"+nic+"','"+email+"','"+teacherid+"','"+"Teacher"+"')";
          int A = stmt.executeUpdate(sql2);
            
             String accounting = null;
@@ -861,55 +866,55 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
       
           
         if(maths.isSelected()){
-        String q1 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+maths+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q1 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+maths+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int a = stmt.executeUpdate(q1);
         }
         else if(science.isSelected()){
-        String q2 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+science+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q2 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+science+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int b = stmt.executeUpdate(q2);      
         } 
         else if(english.isSelected()){
-        String q3 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+english+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q3 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+english+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int c = stmt.executeUpdate(q3);
         }
         else if(jCheckBox2.isSelected()){
-        String q4 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+sinhala+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q4 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+sinhala+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int d = stmt.executeUpdate(q4);
         } 
         else if(jCheckBox3.isSelected()){
-        String q5 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+logic+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q5 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+logic+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int e = stmt.executeUpdate(q5);
         }
         else if(jCheckBox4.isSelected()){
-        String q6 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+history+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q6 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+history+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int f = stmt.executeUpdate(q6);
         } 
         else if(jCheckBox5.isSelected()){
-        String q7 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+accounting+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q7 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+accounting+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int g = stmt.executeUpdate(q7);
         }
         else if(jCheckBox6.isSelected()){
-        String q8 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+econ+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q8 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+econ+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int h = stmt.executeUpdate(q8);
         }
         else if(jCheckBox7.isSelected()){
-        String q9 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+commerce+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q9 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+commerce+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int i = stmt.executeUpdate(q9);
         } 
         else if(jCheckBox8.isSelected()&& cmaths.isSelected()){
-        String q10 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+cmaths+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+cmaths_revision+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
+        String q10 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+cmaths+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+cmaths_revision+\"','\"+null+\"','\"+null+\"','\"+null+\"')";
         int j = stmt.executeUpdate(q10);
         }
         else if(jCheckBox9.isSelected()&& biology.isSelected()){
-        String q11 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+biology+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+biology_revision+\"','\"+null+\"','\"+null+\"')";
+        String q11 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+biology+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+biology_revision+\"','\"+null+\"','\"+null+\"')";
         int k = stmt.executeUpdate(q11);
         }
         else if(jCheckBox10.isSelected()&& chemistry.isSelected() ){
-        String q12 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+chemistry+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+chemistry_revision+\"','\"+null+\"')";
+        String q12 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+chemistry+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+chemistry_revision+\"','\"+null+\"')";
         int l = stmt.executeUpdate(q12);
         }
         else{
-        String q13 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('\"+teacherid+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+physics+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+physics_revision+\"')";
+        String q13 = "INSERT INTO subject_teacher(LogTeacherID, Maths, Science, English, Combine_Maths, Biology, Chemistry, Physics, Sinhala, Logic, History, Accounting, Econ, Commerce, Combine_Maths_rev, Biology_rev, Chemistry_rev, Physics_rev)VALUES('"+teacherid+"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+physics+\"','\"+null+\"','\"+null+\"','\"+null+\"','\"+physics_revision+\"')";
         int m = stmt.executeUpdate(q13);
         }
      

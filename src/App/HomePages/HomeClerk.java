@@ -418,8 +418,6 @@ public class HomeClerk extends javax.swing.JFrame {
         }else if(CmbBox_UserType.getSelectedIndex()==3){
             new RegisterNewLabour().setVisible(true);
         }else if(CmbBox_UserType.getSelectedIndex()==4){
-            new RegisterNewLabour().setVisible(true);
-        }else if(CmbBox_UserType.getSelectedIndex()==5){
             new RegisterNewStudent().setVisible(true);
         }
     }//GEN-LAST:event_CmbBox_UserTypeActionPerformed

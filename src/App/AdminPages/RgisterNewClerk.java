@@ -777,7 +777,8 @@ public class RgisterNewClerk extends javax.swing.JFrame {
         
         }
         catch(Exception e1){
-        JOptionPane.showMessageDialog(rootPane ,e1);
+            e1.printStackTrace();
+        //JOptionPane.showMessageDialog(rootPane ,e1);
         }
         finally {
 
@@ -787,7 +788,8 @@ public class RgisterNewClerk extends javax.swing.JFrame {
                 pst.close();
 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane ,e);
+                e.printStackTrace();
+                //JOptionPane.showMessageDialog(rootPane ,e);
             }
 
         }
@@ -985,24 +987,7 @@ public class RgisterNewClerk extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
