@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/G:/Project-I/Nuwana-Institiute/src/App/AdminPages/RgisterNewClerk.java</file>
+            <file>file:/G:/Project-I/Nuwana-Institiute/src/App/Payment/Payment.java</file>
+            <file>file:/G:/Project-I/Nuwana-Institiute/src/App/HomePages/HomeClerk.java</file>
+            <file>file:/G:/Project-I/Nuwana-Institiute/src/App/Payment/PaymentView.java</file>
+            <file>file:/G:/Project-I/Nuwana-Institiute/src/App/Attendance/BarcodeAttendance.java</file>
+            <file>file:/G:/Project-I/Nuwana-Institiute/src/App/Fees/StudentFees.java</file>
+            <file>file:/G:/Project-I/Nuwana-Institiute/src/App/Barcode/BarcodeRead.java</file>
         </group>
     </open-files>
 </project-private>
