@@ -114,6 +114,11 @@ public class HomeAdmin extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/if_dollar-bills_532623.png"))); // NOI18N
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Good Times Rg", 1, 30)); // NOI18N
         jLabel8.setText("Registrations");
@@ -439,7 +444,7 @@ public class HomeAdmin extends javax.swing.JFrame {
 
     private void CmbBox_ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbBox_ViewActionPerformed
         if(CmbBox_View.getSelectedIndex()==0){
-            JOptionPane.showMessageDialog(rootPane, "Please Select View & Delete User Type!");
+            JOptionPane.showMessageDialog(rootPane, "Please Select User Type!");
         }else if(CmbBox_View.getSelectedIndex()==1){
             new ViewAndDeleteAdmins().setVisible(true);
         }else if(CmbBox_View.getSelectedIndex()==2){
@@ -447,9 +452,9 @@ public class HomeAdmin extends javax.swing.JFrame {
         }else if(CmbBox_View.getSelectedIndex()==3){
             new ViewAndDeleteTeachers().setVisible(true);
         }else if(CmbBox_View.getSelectedIndex()==4){
-            new RegisterNewStudent().setVisible(true);
+            new ViewAndDeleteStudent().setVisible(true);
         }else if(CmbBox_View.getSelectedIndex()==5){
-            new RegisterNewLabour().setVisible(true);
+            new ViewAndDeleteLabours().setVisible(true);
         }
     }//GEN-LAST:event_CmbBox_ViewActionPerformed
 
@@ -497,6 +502,10 @@ public class HomeAdmin extends javax.swing.JFrame {
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         new Time2().setVisible(true);
     }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        new StudentFees().setVisible(true);
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments

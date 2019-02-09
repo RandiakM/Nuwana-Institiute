@@ -35,7 +35,10 @@ public class AdminProfile extends javax.swing.JFrame {
     
     ResultSet rs2=null;
     PreparedStatement pst2 =null;
-    
+    PreparedStatement pst3 =null;
+    ResultSet rs3=null;
+    PreparedStatement pst4 =null;
+    ResultSet rs4=null;
     String EnPass;
     
     public AdminProfile() {
@@ -71,7 +74,7 @@ public class AdminProfile extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        Admin_Register_Btn = new javax.swing.JButton();
+        Admin_Update_Btn = new javax.swing.JButton();
         Admin_Clear_btn = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
@@ -99,6 +102,10 @@ public class AdminProfile extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         newPassword = new javax.swing.JPasswordField();
@@ -110,6 +117,7 @@ public class AdminProfile extends javax.swing.JFrame {
         Admin_change_password = new javax.swing.JButton();
         msgLabel = new javax.swing.JLabel();
         msgLabel1 = new javax.swing.JLabel();
+        Admin_Register_Btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -175,16 +183,15 @@ public class AdminProfile extends javax.swing.JFrame {
         );
 
         jLabel3.setFont(new java.awt.Font("Good Times Rg", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(36, 47, 65));
         jLabel3.setText("My Profile - Admin");
 
-        Admin_Register_Btn.setBackground(new java.awt.Color(255, 255, 255));
-        Admin_Register_Btn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        Admin_Register_Btn.setText("Register");
-        Admin_Register_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Admin_Register_Btn.addActionListener(new java.awt.event.ActionListener() {
+        Admin_Update_Btn.setBackground(new java.awt.Color(255, 255, 255));
+        Admin_Update_Btn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        Admin_Update_Btn.setText("Update");
+        Admin_Update_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Admin_Update_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Admin_Register_BtnActionPerformed(evt);
+                Admin_Update_BtnActionPerformed(evt);
             }
         });
 
@@ -232,6 +239,22 @@ public class AdminProfile extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel14.setText("Email");
 
+        jTextField1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
         jRadioButton1.setBackground(java.awt.Color.lightGray);
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
@@ -242,8 +265,12 @@ public class AdminProfile extends javax.swing.JFrame {
         jRadioButton2.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jRadioButton2.setText("Female");
 
+        jDateChooser1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
         jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel15.setText("My ID");
+
+        jTextField9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
@@ -253,6 +280,17 @@ public class AdminProfile extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
+
+        jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jLabel17.setText("Acc No");
+
+        jTextField10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jLabel19.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jLabel19.setText("Payment ID");
+
+        jTextField11.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jTextField11.setText("PAY-ADM-");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -302,39 +340,48 @@ public class AdminProfile extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                             .addComponent(jTextField7)
-                            .addComponent(jTextField8)))
+                            .addComponent(jTextField8))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(jTextField10))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(82, 82, 82))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jRadioButton2)))
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel6)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                            .addComponent(jTextField2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jRadioButton2))
                         .addGap(18, 18, Short.MAX_VALUE)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -356,10 +403,16 @@ public class AdminProfile extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -455,6 +508,16 @@ public class AdminProfile extends javax.swing.JFrame {
         msgLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         msgLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        Admin_Register_Btn.setBackground(new java.awt.Color(255, 255, 255));
+        Admin_Register_Btn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        Admin_Register_Btn.setText("Register");
+        Admin_Register_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Admin_Register_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Admin_Register_BtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -465,9 +528,11 @@ public class AdminProfile extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(msgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(msgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Admin_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(Admin_Update_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(Admin_Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(5, 5, 5))
@@ -490,8 +555,9 @@ public class AdminProfile extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(msgLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Admin_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Admin_Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Admin_Update_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Admin_Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Admin_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(msgLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
@@ -513,7 +579,54 @@ public class AdminProfile extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Admin_Register_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_Register_BtnActionPerformed
+    private void Admin_Update_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_Update_BtnActionPerformed
+       
+        //basic details
+        String userid=jTextField9.getText();
+        String fname=jTextField1.getText();
+        String lname=jTextField2.getText();
+        String gender=jRadioButton1.isSelected()?"Male":"Female";
+        String no=jTextField3.getText();
+        String street=jTextField4.getText();
+        String city=jTextField5.getText();
+        //date format
+        SimpleDateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd");
+        String bdate=dateformat.format(jDateChooser1.getDate());
+               
+        String telno=jTextField6.getText();
+        String nic=jTextField7.getText();
+        String email=jTextField8.getText();
+        String accno=jTextField10.getText();
+        String payid=jTextField11.getText();
+        
+        String sql="UPDATE admin SET AccNo=?, PaymentID=? WHERE LogAdminId=?";
+        String sql5="UPDATE users SET FName=?, LName=?, No=?, Street=?, City=?, DOB=?, PhoneNo=?, NIC=?, Email=?"
+                + " WHERE LogId=?";
+        
+        try {
+            pst=conn.prepareStatement(sql);
+            pst.setString(1, accno);
+            pst.setString(2, payid);
+            pst.setString(3, userid);
+            pst.executeUpdate();
+            
+            pst3=conn.prepareStatement(sql5);
+            pst3.setString(1, fname);
+            pst3.setString(2, lname);
+            pst3.setString(3, no);
+            pst3.setString(4, street);
+            pst3.setString(5, city);
+            pst3.setString(6, bdate);
+            pst3.setString(7, telno);
+            pst3.setString(8, nic);
+            pst3.setString(9, email);
+            pst3.setString(10, userid);
+            pst3.executeUpdate();
+            
+            JOptionPane.showMessageDialog(rootPane, "Succesfully Updated Details.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
         /*
         //basic details
         String fname=jTextField1.getText();
@@ -634,7 +747,7 @@ public class AdminProfile extends javax.swing.JFrame {
         
         */
            
-    }//GEN-LAST:event_Admin_Register_BtnActionPerformed
+    }//GEN-LAST:event_Admin_Update_BtnActionPerformed
 
     private void Admin_Clear_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_Clear_btnActionPerformed
         
@@ -695,7 +808,7 @@ public class AdminProfile extends javax.swing.JFrame {
         
        msgLabel.setText("Successfully Updated your Password.");
          
-       Admin_Register_Btn.setVisible(false);
+       Admin_Update_Btn.setVisible(false);
        Admin_change_password.setVisible(false);
         }
         catch(Exception e){
@@ -731,11 +844,21 @@ public class AdminProfile extends javax.swing.JFrame {
         
         String userid=jTextField9.getText();
         String sql3="select * from users where LogId='"+jTextField9.getText()+"'";
+        String sql4="select * from admin where LogAdminId='"+jTextField9.getText()+"'";
+//        String sql3="SELECT a.*, b.AccNo, b.PaymentID FROM" +
+//                            " users a" +
+//                            " INNER JOIN" +
+//                            " admin b" +
+//                            " ON a.LogId=b.LogAdminId" +
+//                            " WHERE LogId='"+jTextField9.getText()+"'";
         try {
             pst1=conn.prepareStatement(sql3);
             rs1=pst1.executeQuery();
+            pst2=conn.prepareStatement(sql4);
+            rs2=pst2.executeQuery();
             //ResultSet rs = stmt.executeQuery(query);
             rs1.next();
+            rs2.next();
             jTextField1.setText(rs1.getString("FName"));
             jTextField2.setText(rs1.getString("LName"));
             String GN = rs1.getString("Gender");
@@ -753,13 +876,71 @@ public class AdminProfile extends javax.swing.JFrame {
             jTextField6.setText(rs1.getString("PhoneNo"));
             jTextField7.setText(rs1.getString("NIC"));
             jTextField8.setText(rs1.getString("Email"));
+            jTextField10.setText(rs2.getString("AccNo"));
+            jTextField11.setText(rs2.getString("PaymentID"));
             rs1.close();
             pst1.close();
+            rs2.close();
+            pst2.close();
             //con.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e);
         }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void Admin_Register_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_Register_BtnActionPerformed
+        
+        //basic details
+        String userid=jTextField9.getText();
+        String fname=jTextField1.getText();
+        String lname=jTextField2.getText();
+        String gender=jRadioButton1.isSelected()?"Male":"Female";
+        String no=jTextField3.getText();
+        String street=jTextField4.getText();
+        String city=jTextField5.getText();
+        //date format
+        SimpleDateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd");
+        String bdate=dateformat.format(jDateChooser1.getDate());
+               
+        String telno=jTextField6.getText();
+        String nic=jTextField7.getText();
+        String email=jTextField8.getText();
+        String accno=jTextField10.getText();
+        String payid=jTextField11.getText();
+        
+        String sql="INSERT INTO users(Fname,LName,Gender,No,Street,City,DOB,PhoneNo,NIC,Email,LogId)"
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        String sql5="INSERT INTO admin(LogAdminId,AccNo,PaymentID)"
+                + "VALUES(?,?,?)";
+                
+        
+        try {
+            pst4=conn.prepareStatement(sql5);
+            pst4.setString(1, userid);
+            pst4.setString(2, accno);
+            pst4.setString(3, payid);
+            pst4.executeUpdate();
+            
+            pst4=conn.prepareStatement(sql);
+            pst4.setString(1, fname);
+            pst4.setString(2, lname);
+            pst4.setString(3, gender);
+            pst4.setString(4, no);
+            pst4.setString(5, street);
+            pst4.setString(6, city);
+            pst4.setString(7, bdate);
+            pst4.setString(8, telno);
+            pst4.setString(9, nic);
+            pst4.setString(10, email);
+            pst4.setString(11, "ADM-001");
+            //pst4.setString(12, "Admin");
+            pst4.executeUpdate();
+            
+            JOptionPane.showMessageDialog(rootPane, "Succesfully Added Details.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_Admin_Register_BtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -807,6 +988,7 @@ public class AdminProfile extends javax.swing.JFrame {
     private javax.swing.JButton Admin_Clear_btn;
     private javax.swing.JButton Admin_Register_Btn;
     private javax.swing.JButton Admin_Register_Btn2;
+    private javax.swing.JButton Admin_Update_Btn;
     private javax.swing.JButton Admin_change_password;
     private javax.swing.JTextField UserID;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -819,6 +1001,8 @@ public class AdminProfile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -840,6 +1024,8 @@ public class AdminProfile extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;

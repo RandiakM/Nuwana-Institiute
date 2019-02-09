@@ -321,7 +321,8 @@
                       <Font name="Century Gothic" size="12" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="14" rowCount="0">
+                      <Table columnCount="13" rowCount="0">
+                        <Column editable="false" title="Log ID" type="java.lang.String"/>
                         <Column editable="false" title="First Name" type="java.lang.String"/>
                         <Column editable="false" title="Last Name" type="java.lang.String"/>
                         <Column editable="false" title="Gender" type="java.lang.String"/>
@@ -332,14 +333,17 @@
                         <Column editable="false" title="PhoneNo" type="java.lang.String"/>
                         <Column editable="false" title="NIC" type="java.lang.String"/>
                         <Column editable="false" title="Email" type="java.lang.String"/>
-                        <Column editable="false" title="Log ID" type="java.lang.String"/>
-                        <Column editable="false" title="User Type" type="java.lang.String"/>
                         <Column editable="false" title="Acc No" type="java.lang.String"/>
                         <Column editable="false" title="Payment ID" type="java.lang.String"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="80" minWidth="80" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
@@ -356,16 +360,6 @@
                           <Renderer/>
                         </Column>
                         <Column maxWidth="50" minWidth="50" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>

@@ -3,12 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package App.AdminPages;
+package App.AdminPages;                      
 
+import App.AdminPages.*;
+import App.ClerkPages.*;
+import App.AdminPages.*;
+import App.ClerkPages.*;
+import App.AdminPages.*;
 import App.Login.*;
+import App.Barcode.*;
 import App.*;
 import App.Barcode.Barcode_Image;
-import java.awt.HeadlessException;
+import App.Barcode.Barcode_PDF;
+import java.awt.HeadlessException;       
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -28,7 +35,7 @@ import sun.security.util.Password;
  * @author Randika
  */
 public class RegisterNewStudent extends javax.swing.JFrame {
-
+    
     Connection conn=null;
     ResultSet rs=null;
     PreparedStatement pst =null;
@@ -46,6 +53,7 @@ public class RegisterNewStudent extends javax.swing.JFrame {
     //String six_eleven_subject;
     String st_subject;
     
+        
     public RegisterNewStudent() {
         this.setUndecorated(false);
         this.setAlwaysOnTop(true);
@@ -82,8 +90,6 @@ public class RegisterNewStudent extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        Student_Register_Btn = new javax.swing.JButton();
-        Student_Clear_btn = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -93,17 +99,12 @@ public class RegisterNewStudent extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
@@ -117,14 +118,31 @@ public class RegisterNewStudent extends javax.swing.JFrame {
         biology = new javax.swing.JCheckBox();
         chemistry = new javax.swing.JCheckBox();
         physics = new javax.swing.JCheckBox();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox5 = new javax.swing.JCheckBox();
+        jCheckBox6 = new javax.swing.JCheckBox();
+        jCheckBox7 = new javax.swing.JCheckBox();
+        jCheckBox8 = new javax.swing.JCheckBox();
+        jCheckBox9 = new javax.swing.JCheckBox();
+        jCheckBox10 = new javax.swing.JCheckBox();
         jLabel20 = new javax.swing.JLabel();
-        Grade_select_all = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         jTextField11 = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         jTextField12 = new javax.swing.JTextField();
-        msgLabel = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        jTextField13 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
         msgLabel1 = new javax.swing.JLabel();
+        msgLabel = new javax.swing.JLabel();
+        Student_Register_Btn = new javax.swing.JButton();
+        Student_Clear_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -189,26 +207,6 @@ public class RegisterNewStudent extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Good Times Rg", 1, 36)); // NOI18N
         jLabel3.setText("Register New Student");
 
-        Student_Register_Btn.setBackground(new java.awt.Color(255, 255, 255));
-        Student_Register_Btn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        Student_Register_Btn.setText("Register");
-        Student_Register_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Student_Register_Btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Student_Register_BtnActionPerformed(evt);
-            }
-        });
-
-        Student_Clear_btn.setBackground(new java.awt.Color(255, 255, 255));
-        Student_Clear_btn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        Student_Clear_btn.setText("Clear");
-        Student_Clear_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Student_Clear_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Student_Clear_btnActionPerformed(evt);
-            }
-        });
-
         jPanel3.setBackground(java.awt.Color.lightGray);
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Basic Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18))); // NOI18N
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -234,15 +232,6 @@ public class RegisterNewStudent extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel11.setText("Date of Birth");
 
-        jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel12.setText("Tel No");
-
-        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel13.setText("NIC");
-
-        jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel14.setText("Email");
-
         jTextField1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
 
         jTextField2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -254,10 +243,11 @@ public class RegisterNewStudent extends javax.swing.JFrame {
         jTextField5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
 
         jTextField6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-
-        jTextField7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-
-        jTextField8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
 
         jRadioButton1.setBackground(java.awt.Color.lightGray);
         buttonGroup1.add(jRadioButton1);
@@ -278,7 +268,7 @@ public class RegisterNewStudent extends javax.swing.JFrame {
         jTextField9.setText("STD-");
 
         jPanel5.setBackground(new java.awt.Color(189, 183, 107));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Grade & Subjects", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), " Subjects", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18))); // NOI18N
 
         maths.setBackground(new java.awt.Color(189, 183, 107));
         maths.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
@@ -343,23 +333,77 @@ public class RegisterNewStudent extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox1.setBackground(new java.awt.Color(189, 183, 107));
+        jCheckBox1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jCheckBox1.setText("Sinhala");
+
+        jCheckBox2.setBackground(new java.awt.Color(189, 183, 107));
+        jCheckBox2.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jCheckBox2.setText("Logic");
+
+        jCheckBox3.setBackground(new java.awt.Color(189, 183, 107));
+        jCheckBox3.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jCheckBox3.setText("History");
+
+        jCheckBox4.setBackground(new java.awt.Color(189, 183, 107));
+        jCheckBox4.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jCheckBox4.setText("Accounting");
+
+        jCheckBox5.setBackground(new java.awt.Color(189, 183, 107));
+        jCheckBox5.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jCheckBox5.setText("Econ");
+
+        jCheckBox6.setBackground(new java.awt.Color(189, 183, 107));
+        jCheckBox6.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jCheckBox6.setText("Commerce");
+
+        jCheckBox7.setBackground(new java.awt.Color(189, 183, 107));
+        jCheckBox7.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jCheckBox7.setText("C.Maths(Rev)");
+
+        jCheckBox8.setBackground(new java.awt.Color(189, 183, 107));
+        jCheckBox8.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jCheckBox8.setText("Biology(Rev)");
+
+        jCheckBox9.setBackground(new java.awt.Color(189, 183, 107));
+        jCheckBox9.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jCheckBox9.setText("Chemistry(Rev)");
+
+        jCheckBox10.setBackground(new java.awt.Color(189, 183, 107));
+        jCheckBox10.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jCheckBox10.setText("Physics(Rev)");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(science, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(maths, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(english, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(science)
+                    .addComponent(english, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(maths, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox1)
+                            .addComponent(jCheckBox2)
+                            .addComponent(jCheckBox3)
+                            .addComponent(jCheckBox4)
+                            .addComponent(jCheckBox5))))
+                .addGap(24, 24, 24)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cmaths, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(biology, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(chemistry, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(physics, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(physics, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox10)
+                            .addComponent(jCheckBox6)
+                            .addComponent(jCheckBox7)
+                            .addComponent(jCheckBox8)
+                            .addComponent(jCheckBox9))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,29 +412,41 @@ public class RegisterNewStudent extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(maths)
                     .addComponent(cmaths))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(science)
+                    .addComponent(science, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(biology))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(english)
                     .addComponent(chemistry))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(physics)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox1)
+                    .addComponent(jCheckBox6))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox2)
+                    .addComponent(jCheckBox7))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox3)
+                    .addComponent(jCheckBox8))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox9)
+                    .addComponent(jCheckBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox10)
+                    .addComponent(jCheckBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel20.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel20.setText("Grade");
-
-        Grade_select_all.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        Grade_select_all.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "6", "7", "8", "9", "10", "11", "12", "13", "Revision" }));
-        Grade_select_all.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Grade_select_allActionPerformed(evt);
-            }
-        });
 
         jLabel18.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel18.setText("Parent Name");
@@ -402,160 +458,184 @@ public class RegisterNewStudent extends javax.swing.JFrame {
 
         jTextField12.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
 
+        jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jLabel16.setText("TelNo");
+
+        jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jLabel17.setText("NIC");
+
+        jLabel19.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jLabel19.setText("Email");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                            .addComponent(jTextField7)
-                            .addComponent(jTextField8))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel20)
-                                .addGap(64, 64, 64)
-                                .addComponent(Grade_select_all, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel22)
-                                    .addComponent(jLabel18))
-                                .addGap(12, 12, 12)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                                    .addComponent(jTextField11)))
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                                    .addComponent(jTextField10)
+                                    .addComponent(jTextField13))))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(349, 349, 349)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField11))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel20)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel22)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2))
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField4)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(12, 12, 12))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(14, 14, 14))
+                                    .addComponent(jRadioButton1))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRadioButton2))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(7, 7, 7)
+                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                            .addComponent(jTextField5)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(537, 537, 537)
+                        .addComponent(jTextField7)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton2))
+                .addGap(23, 23, 23)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addComponent(jLabel8)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(337, 337, 337))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(177, 177, 177)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(41, 41, 41)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                                                .addGap(82, 82, 82))
-                                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(jRadioButton2))
-                                                .addGap(18, 18, Short.MAX_VALUE)))
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(jLabel8)
-                                                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                                                    .addComponent(jTextField3))
-                                                .addGap(17, 17, 17)
-                                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                                .addGap(9, 9, 9)
-                                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addContainerGap(255, Short.MAX_VALUE)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(Grade_select_all, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(18, 18, 18))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(14, 14, 14)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel16)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17)
+                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(jLabel15)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Basic Details", jPanel3);
 
         msgLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         msgLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        Student_Register_Btn.setBackground(new java.awt.Color(255, 255, 255));
+        Student_Register_Btn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        Student_Register_Btn.setText("Register");
+        Student_Register_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Student_Register_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Student_Register_BtnActionPerformed(evt);
+            }
+        });
+
+        Student_Clear_btn.setBackground(new java.awt.Color(255, 255, 255));
+        Student_Clear_btn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        Student_Clear_btn.setText("Clear");
+        Student_Clear_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Student_Clear_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Student_Clear_btnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -572,15 +652,15 @@ public class RegisterNewStudent extends javax.swing.JFrame {
                         .addComponent(msgLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(msgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(213, 213, 213)
-                                .addComponent(Student_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(msgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(85, 85, 85)
+                                .addComponent(Student_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(Student_Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1063, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(Student_Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -589,16 +669,16 @@ public class RegisterNewStudent extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(msgLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(msgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Student_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Student_Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Student_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Student_Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(msgLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
+                .addGap(78, 78, 78))
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("");
@@ -607,7 +687,9 @@ public class RegisterNewStudent extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -620,6 +702,7 @@ public class RegisterNewStudent extends javax.swing.JFrame {
     private void Student_Register_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Student_Register_BtnActionPerformed
         
         //basic details
+        String studentid=jTextField9.getText();
         String fname=jTextField1.getText();
         String lname=jTextField2.getText();
         String gender=jRadioButton1.isSelected()?"Male":"Female";
@@ -631,12 +714,9 @@ public class RegisterNewStudent extends javax.swing.JFrame {
         String bdate=dateformat.format(jDateChooser1.getDate());
                
         String telno=jTextField6.getText();
-        String nic=jTextField7.getText();
-        String email=jTextField8.getText();
-        String createid=jTextField9.getText();
-        //String mfees=jTextField10.getText();
-//        SimpleDateFormat dateformatpay=new SimpleDateFormat("yyyy-MM-dd");
-//        String payday=dateformat.format(jDateChooser2.getDate());
+        String grade=jTextField7.getText();
+        String nic=jTextField10.getText();
+        String email=jTextField13.getText();
         String parentname=jTextField11.getText();
         String parenttelno=jTextField12.getText();
         //String payid=jTextField11.getText();
@@ -657,26 +737,470 @@ public class RegisterNewStudent extends javax.swing.JFrame {
         String clkid = rs.getString("LogClerkId");
         
         
-        String sql1="INSERT INTO student(StudentID, FName, LName, Gender,No,Street, City ,DOB ,PhoneNO ,NIC, Email,LogClerkId) VALUES "
-                + "('"+createid+"','"+fname+"','"+lname+"','"+gender+"','"+no+"','"+street+"','"+city+"','"+bdate+"','"+telno+"','"+nic+"','"+email+"','"+clkid+"')";
+        String sql1="INSERT INTO student(StudentID, FName, LName, Gender,No,Street, City ,DOB ,PhoneNO ,NIC, Email,grade,LogClerkId) VALUES "
+                + "('"+studentid+"','"+fname+"','"+lname+"','"+gender+"','"+no+"','"+street+"','"+city+"','"+bdate+"','"+telno+"','"+nic+"','"+email+"','"+grade+"','"+clkid+"')";
         int n1 = stmt.executeUpdate(sql1);
         
         if(n1>0){
-            String sql2="INSERT into parent(pname,StudentID,ptelNo)VALUES('"+parentname+"','"+parenttelno+"','"+createid+"')";
+            String sql2="INSERT into parent(pname,StudentsID,ptelNo)VALUES('"+parentname+"','"+parenttelno+"','"+studentid+"')";
             int A = stmt.executeUpdate(sql2);
-         
-         msgLabel.setText("Succesfully added data to the student table");
-         JOptionPane.showMessageDialog(rootPane, "Registration Successfully");
-         Student_Register_Btn.setVisible(false);
+            
+          
+        if(jTextField7.getText().equals("6") && science.isSelected()){
+        String q11 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int a = stmt.executeUpdate(q11);
+        }
+        else if(jTextField7.getText().equals("6")  && maths.isSelected()){
+        String q12 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int b = stmt.executeUpdate(q12);
+        }
+        else if(jTextField7.getText().equals("6")  && english.isSelected()){
+        String q13 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int c = stmt.executeUpdate(q13);
+        }
+         else if(jTextField7.getText().equals("6")  && science.isSelected() && maths.isSelected()){
+        String q14 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int d = stmt.executeUpdate(q14);
+        }
+         else if(jTextField7.getText().equals("6")  && science.isSelected() && english.isSelected()){
+        String q15 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+1+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int e = stmt.executeUpdate(q15);
+        }
+         else if(jTextField7.getText().equals("6")  && english.isSelected() && maths.isSelected()){
+        String q16 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int f = stmt.executeUpdate(q16);
+        } 
+         else if(jTextField7.getText().equals("6")  && (science.isSelected() && maths.isSelected() && english.isSelected())){
+        String q17 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+1+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int g = stmt.executeUpdate(q17);
+        }
+        else if(jTextField7.getText().equals("7")  && science.isSelected()){
+        String q18 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int h = stmt.executeUpdate(q18);
+        }
+        else if(jTextField7.getText().equals("7")  && maths.isSelected()){
+        String q19 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int i = stmt.executeUpdate(q19);
+        }
+         else if(jTextField7.getText().equals("7")  && english.isSelected()){
+        String q20 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int j = stmt.executeUpdate(q20);
+        }
+         else if(jTextField7.getText().equals("7")&& science.isSelected() && maths.isSelected()){
+        String q21 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int k = stmt.executeUpdate(q21);
+        } 
+         else if(jTextField7.getText().equals("7")  && science.isSelected() && english.isSelected()){
+        String q22 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int l = stmt.executeUpdate(q22);
+        }
+         else if(jTextField7.getText().equals("7")  && maths.isSelected() && english.isSelected()){
+        String q23 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int m = stmt.executeUpdate(q23);
+        }
+         else if(jTextField7.getText().equals("7")  && science.isSelected() && maths.isSelected() && english.isSelected()){
+        String q24 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int n = stmt.executeUpdate(q24);
+        }
+         else if(jTextField7.getText().equals("7")  && science.isSelected()){
+        String q25 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int o = stmt.executeUpdate(q25);
+        }
+         else if(jTextField7.getText().equals("8")  && maths.isSelected()){
+        String q26 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int p = stmt.executeUpdate(q26);
+        }
+         else if(jTextField7.getText().equals("8")  && english.isSelected()){
+        String q27 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int q = stmt.executeUpdate(q27);
+        } 
+         else if(jTextField7.getText().equals("8") && science.isSelected() && maths.isSelected()){
+        String q28 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int r = stmt.executeUpdate(q28);
+        }
+         else if(jTextField7.getText().equals("8")  && science.isSelected() && english.isSelected()){
+        String q29 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int s = stmt.executeUpdate(q29);
+        }
+        else if(jTextField7.getText().equals("8") && maths.isSelected() && english.isSelected()){
+        String q30 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int t = stmt.executeUpdate(q30);
+        }
+         else if(jTextField7.getText().equals("8") && english.isSelected() &&maths.isSelected()  && science.isSelected()){
+        String q31 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int u = stmt.executeUpdate(q31);
+        }
+        else if(jTextField7.getText().equals("9")  && science.isSelected()){
+        String q32 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int v = stmt.executeUpdate(q32);
+        }
+         else if(jTextField7.getText().equals("9")  && maths.isSelected()){
+        String q33 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int w = stmt.executeUpdate(q33);
+        }
+         else if(jTextField7.getText().equals("9") && english.isSelected()){
+        String q34 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int x = stmt.executeUpdate(q34);
+        }
+         else if(jTextField7.getText().equals("9") && science.isSelected() && maths.isSelected()){
+        String q35 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int y = stmt.executeUpdate(q35);
+        }
+         else if(jTextField7.getText().equals("9") && science.isSelected() && english.isSelected()){
+        String q36 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int z = stmt.executeUpdate(q36);
+        }
+         else if(jTextField7.getText().equals("9") && maths.isSelected() && english.isSelected()){
+        String q37 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aa = stmt.executeUpdate(q37);
+        } 
+         else if(jTextField7.getText().equals("9") && science.isSelected() && maths.isSelected() && english.isSelected()){
+        String q38 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int ab = stmt.executeUpdate(q38);
+        }
+         else if(jTextField7.getText().equals("10") && science.isSelected()){
+        String q39 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int ac = stmt.executeUpdate(q39);
+        }
+        else if(jTextField7.getText().equals("10") && maths.isSelected()){
+        String q40 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int ad = stmt.executeUpdate(q40);
+        }
+         else if(jTextField7.getText().equals("10")&& english.isSelected()){
+        String q41 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int ae = stmt.executeUpdate(q41);
+        }
+         else if(jTextField7.getText().equals("10") && science.isSelected() && maths.isSelected()){
+        String q42 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int af = stmt.executeUpdate(q42);
+        } 
+         else if(jTextField7.getText().equals("10") && science.isSelected() && english.isSelected()){
+        String q43 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int ag = stmt.executeUpdate(q43);
+        }
+         else if(jTextField7.getText().equals("10") && english.isSelected() && maths.isSelected()){
+        String q44 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int ah = stmt.executeUpdate(q44);
+        }
+         else if(jTextField7.getText().equals("10") && english.isSelected() && maths.isSelected() && science.isSelected()){
+        String q45 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int ai = stmt.executeUpdate(q45);
+        }
+         else if(jTextField7.getText().equals("11") && science.isSelected()){
+        String q46 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aj = stmt.executeUpdate(q46);
+        }
+         else if(jTextField7.getText().equals("11") && maths.isSelected()){
+        String q47 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int ak = stmt.executeUpdate(q47);
+        }
+         else if(jTextField7.getText().equals("11") && english.isSelected()){
+        String q48 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int am = stmt.executeUpdate(q48);
+        } 
+         else if(jTextField7.getText().equals("11") && science.isSelected() && maths.isSelected()){
+        String q49 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int an = stmt.executeUpdate(q49);
+        }
+         else if(jTextField7.getText().equals("11") && science.isSelected() && english.isSelected()){
+        String q50 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int ao = stmt.executeUpdate(q50);
+        }
+        else if(jTextField7.getText().equals("11") && english.isSelected() && maths.isSelected()){
+        String q51 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int ap = stmt.executeUpdate(q51);
+        }
+         else if(jTextField7.getText().equals("11") && english.isSelected() && maths.isSelected() && science.isSelected()){
+        String q52 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aq = stmt.executeUpdate(q52);
+        }
+         else if(jTextField7.getText().equals("12") && cmaths.isSelected()){
+        String q53 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int ar = stmt.executeUpdate(q53);
+        } 
+         else if(jTextField7.getText().equals("12")  && chemistry.isSelected()){
+        String q54 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int as = stmt.executeUpdate(q54);
+        }
+        else if(jTextField7.getText().equals("12")  && physics.isSelected()){
+        String q55 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int at = stmt.executeUpdate(q55);
+        }
+         else if(jTextField7.getText().equals("12")  && cmaths.isSelected() && chemistry.isSelected()){
+        String q56 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int au = stmt.executeUpdate(q56);
+        }
+         else if(jTextField7.getText().equals("12")  && cmaths.isSelected() && physics.isSelected()){
+        String q57 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int av = stmt.executeUpdate(q57);
+        }
+         else if(jTextField7.getText().equals("12")  && chemistry.isSelected() && physics.isSelected()){
+        String q58 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aw = stmt.executeUpdate(q58);
+        }
+         else if(jTextField7.getText().equals("12")  && cmaths.isSelected() && chemistry.isSelected() && physics.isSelected()){
+        String q59 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int ax = stmt.executeUpdate(q59);
+        } 
+         else if(jTextField7.getText().equals("12")  && biology.isSelected()){
+        String q60 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int ay = stmt.executeUpdate(q60);
+        }
+         else if(jTextField7.getText().equals("12")  && biology.isSelected() && chemistry.isSelected()){
+        String q61 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int az = stmt.executeUpdate(q61);
+        }
+        else if(jTextField7.getText().equals("12")  && biology.isSelected() && physics.isSelected()){
+        String q62 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aaa = stmt.executeUpdate(q62);
+        }
+         else if(jTextField7.getText().equals("12")  && biology.isSelected() && chemistry.isSelected() && physics.isSelected()){
+        String q63 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aab = stmt.executeUpdate(q63);
+        }
+         else if(jTextField7.getText().equals("12")  && jCheckBox1.isSelected()){
+        String q64 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aac = stmt.executeUpdate(q64);
+        } 
+         else if(jTextField7.getText().equals("12")  && jCheckBox3.isSelected()){
+        String q65 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aad = stmt.executeUpdate(q65);
+        }
+         else if(jTextField7.getText().equals("12")  && jCheckBox2.isSelected()){
+        String q66 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aae = stmt.executeUpdate(q66);
+        }
+         else if(jTextField7.getText().equals("12")  && jCheckBox1.isSelected() &&jCheckBox3.isSelected() ){
+        String q67 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aaf = stmt.executeUpdate(q67);
+        }
+         else if(jTextField7.getText().equals("12")  && jCheckBox1.isSelected() &&jCheckBox2.isSelected()){
+        String q68 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aag = stmt.executeUpdate(q68);
+        }
+         else if(jTextField7.getText().equals("12")  && jCheckBox2.isSelected() &&jCheckBox3.isSelected()){
+        String q69 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aah = stmt.executeUpdate(q69);
+        }
+         else if(jTextField7.getText().equals("12")  && jCheckBox1.isSelected() && jCheckBox3.isSelected() && jCheckBox3.isSelected()){
+        String q70 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aai = stmt.executeUpdate(q70);
+        } 
+         else if(jTextField7.getText().equals("12")  && jCheckBox4.isSelected()){
+        String q71 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aaj = stmt.executeUpdate(q71);
+        }
+         else if(jTextField7.getText().equals("12")  && jCheckBox5.isSelected()){
+        String q72 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aak = stmt.executeUpdate(q72);
+        }
+        else if(jTextField7.getText().equals("12")  && jCheckBox6.isSelected()){
+        String q73 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aal = stmt.executeUpdate(q73);
+        }
+         else if(jTextField7.getText().equals("12")  && jCheckBox4.isSelected() && jCheckBox5.isSelected()){
+        String q74 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aam = stmt.executeUpdate(q74);
+        }
+         else if(jTextField7.getText().equals("12")  && jCheckBox4.isSelected() && jCheckBox6.isSelected()){
+        String q75 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aan = stmt.executeUpdate(q75);
+        } 
+         else if(jTextField7.getText().equals("12")  && jCheckBox6.isSelected() && jCheckBox5.isSelected()){
+        String q76 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aao = stmt.executeUpdate(q76);
+        }
+         else if(jTextField7.getText().equals("12")  && jCheckBox4.isSelected() && jCheckBox5.isSelected() && jCheckBox6.isSelected()){
+        String q77 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aap = stmt.executeUpdate(q77);
+        }
+         else if(jTextField7.getText().equals("12")  && cmaths.isSelected()){
+        String q78 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aaq = stmt.executeUpdate(q78);
+        }
+         else if(jTextField7.getText().equals("12")  && chemistry.isSelected()){
+        String q79 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aar = stmt.executeUpdate(q79);
+        }
+         else if(jTextField7.getText().equals("12") && physics.isSelected()){
+        String q80 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aas = stmt.executeUpdate(q80);
+        }
+         else if(jTextField7.getText().equals("12")  && cmaths.isSelected() && chemistry.isSelected()){
+        String q81 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aat = stmt.executeUpdate(q81);
+        } 
+         else if(jTextField7.getText().equals("12") && cmaths.isSelected() && physics.isSelected()){
+        String q82 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aau = stmt.executeUpdate(q82);
+        }
+           else if(jTextField7.getText().equals("12")  && physics.isSelected() && chemistry.isSelected()){
+        String q83 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aav = stmt.executeUpdate(q83);
+        }
+         else if(jTextField7.getText().equals("12")  && cmaths.isSelected() && chemistry.isSelected() &&  physics.isSelected() ){
+        String q84 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int aaw = stmt.executeUpdate(q84);
+        } 
+         else if(jTextField7.getText().equals("12")  && biology.isSelected()){
+        String q85 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"')";
+        int aax = stmt.executeUpdate(q85);
+        }
+        else if(jTextField7.getText().equals("12")  && biology.isSelected() && chemistry.isSelected()){
+        String q86 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"')";
+        int aay = stmt.executeUpdate(q86);
+        }
+        else if(jTextField7.getText().equals("12")  && biology.isSelected() && physics.isSelected()){
+        String q87 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"')";
+        int aaz = stmt.executeUpdate(q87);
+        }
+        else if(jTextField7.getText().equals("12")  && biology.isSelected() && physics.isSelected() && chemistry.isSelected()){
+        String q88 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+1+"')";
+        int aba = stmt.executeUpdate(q88);
+        }
+         else if(jTextField7.getText().equals("13") && jCheckBox1.isSelected()){
+        String q89 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abb = stmt.executeUpdate(q89);
+        }
+         else if(jTextField7.getText().equals("13")  && jCheckBox3.isSelected()){
+        String q90 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abc = stmt.executeUpdate(q90);
+        }
+        else if(jTextField7.getText().equals("13")  && jCheckBox2.isSelected()){
+        String q91 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abd = stmt.executeUpdate(q91);
+        }
+         else if(jTextField7.getText().equals("13")  && jCheckBox1.isSelected() &&  jCheckBox3.isSelected()){
+        String q92 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abe = stmt.executeUpdate(q92);
+        }
+         else if(jTextField7.getText().equals("13") && jCheckBox1.isSelected() &&  jCheckBox2.isSelected()){
+        String q93 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abf = stmt.executeUpdate(q93);
+        } 
+         else if(jTextField7.getText().equals("13")  && jCheckBox2.isSelected() &&  jCheckBox3.isSelected()){
+        String q94 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abg = stmt.executeUpdate(q94);
+        }
+         else if(jTextField7.getText().equals("13")  && jCheckBox1.isSelected() &&  jCheckBox3.isSelected() && jCheckBox2.isSelected()){
+        String q95 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abh = stmt.executeUpdate(q95);
+        }
+         else if(jTextField7.getText().equals("13") && jCheckBox4.isSelected()){
+        String q96 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abi = stmt.executeUpdate(q96);
+        }
+         else if(jTextField7.getText().equals("13")  && jCheckBox5.isSelected()){
+        String q97 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abj = stmt.executeUpdate(q97);
+        }
+         else if(jTextField7.getText().equals("13")  && jCheckBox6.isSelected()){
+        String q98 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abk = stmt.executeUpdate(q98);
+        }
+         else if(jTextField7.getText().equals("13") && jCheckBox4.isSelected() &&  jCheckBox5.isSelected()){
+        String q99 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abl = stmt.executeUpdate(q99);
+        } 
+         else if(jTextField7.getText().equals("13")  && jCheckBox4.isSelected() &&  jCheckBox6.isSelected()){
+        String q100 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abm = stmt.executeUpdate(q100);
+        }
+         else if(jTextField7.getText().equals("13")  && jCheckBox5.isSelected() &&  jCheckBox6.isSelected()){
+        String q101 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abn = stmt.executeUpdate(q101);
+        }
+        else if(jTextField7.getText().equals("13")  && jCheckBox4.isSelected() &&  jCheckBox5.isSelected() && jCheckBox6.isSelected()){
+        String q102 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abo = stmt.executeUpdate(q102);
+        }
+         else if(jTextField7.getText().equals("revision")  && jCheckBox7.isSelected()){
+        String q103 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abp = stmt.executeUpdate(q103);
+        }
+        else if(jTextField7.getText().equals("revision")  && jCheckBox9.isSelected()){
+        String q104 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abq = stmt.executeUpdate(q104);
+        } 
+        else if(jTextField7.getText().equals("revision")  && jCheckBox10.isSelected()){
+        String q105 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abr = stmt.executeUpdate(q105);
+        }
+         else if(jTextField7.getText().equals("revision") && jCheckBox7.isSelected() &&  jCheckBox9.isSelected()){
+        String q106 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"','"+1+"','"+null+"','"+null+"','"+null+"','"+null+"')";
+        int abs = stmt.executeUpdate(q106);
+        }
+         else if(jTextField7.getText().equals("revision")  && jCheckBox7.isSelected() &&  jCheckBox10.isSelected()){
+        String q107 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+null+"')";
+        int abt = stmt.executeUpdate(q107);
+        }
+         else if(jTextField7.getText().equals("revision") && jCheckBox10.isSelected() &&  jCheckBox9.isSelected()){
+        String q108 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"')";
+        int abu = stmt.executeUpdate(q108);
+        }
+         else if(jTextField7.getText().equals("revision")  && jCheckBox7.isSelected() &&  jCheckBox9.isSelected() && jCheckBox10.isSelected()){
+        String q109= "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"')";
+        int abv = stmt.executeUpdate(q109);
+        }
+         else if(jTextField7.getText().equals("revision")  && jCheckBox8.isSelected()){
+        String q110 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+null+"')";
+        int abw = stmt.executeUpdate(q110);
+        } 
+         else if(jTextField7.getText().equals("revision")  && jCheckBox8.isSelected() &&  jCheckBox9.isSelected()){
+        String q111 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+null+"','"+1+"')";
+        int abx = stmt.executeUpdate(q111);
+        }
+         else if(jTextField7.getText().equals("revision")  && jCheckBox8.isSelected() &&  jCheckBox10.isSelected()){
+        String q112 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+1+"')";
+        int aby = stmt.executeUpdate(q112);
+        }
+        else if(jTextField7.getText().equals("revision")  && jCheckBox8.isSelected() &&  jCheckBox9.isSelected() && jCheckBox10.isSelected()){
+        String q113 = "INSERT INTO student_subject(StudentId, 6_science, 6_maths, 6_english,7_science,7_maths,7_english,8_science,8_maths,8_english,9_science,9_maths,9_english,10_science,10_maths,10_english,11_science,11_maths,11_english,12_commaths, 12_biology, 12_chemistry, 12_physics, 12_sinhala, 12_history, 12_logic, 12_accounting, 12_econ, 12_commerce,13_commaths,13_biology,13_chemistry,13_physics,13_sinhala,13_history,13_logic,13_accounting,13_econ,13_commerce,rev_commaths,rev_biology,rev_chemistry,rev_physics)VALUES('"+studentid+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+null+"','"+1+"','"+null+"','"+1+"','"+1+"')";
+        int abz = stmt.executeUpdate(q113);
+        } 
+      
+
+        msgLabel.setText("Succesfully added data to the student, parent & student_subject tables..");
+        JOptionPane.showMessageDialog(rootPane, "Registration Successfully");
+        Student_Register_Btn.setVisible(false);
         }
         else{
         JOptionPane.showMessageDialog(rootPane, "Error While Registration"); 
         }
+      ////////////////////////////////////////////////////////////////////////////////////
+      //Barcode generate Code
+      
+      String querybar="select * from student";
+			pstbar = conn.prepareStatement(querybar);
+			rsbar=pstbar.executeQuery();
+			while(rsbar.next()){
+				Barcode_Image.createImage(rsbar.getString("StudentId")+".png", rsbar.getString("StudentId"));
+				//Barcode_PDF.createPDF(rsbar.getString("StudentId")+".pdf", rsbar.getString("StudentId"));
+				System.out.println("Creating Barcode for "+rsbar.getString("StudentId"));
+			}
+      
       
         } catch (Exception e) {
      
           JOptionPane.showMessageDialog(rootPane, e);
-        }
+        }finally{
+			if(conn!=null){
+				try {
+						conn.close();
+					}
+				 catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			if(pstbar!=null){
+				try {
+					pstbar.close();
+					}
+				 catch (Exception e2) {
+					 e2.printStackTrace();
+				}
+			}
+		}
       
     }//GEN-LAST:event_Student_Register_BtnActionPerformed
 
@@ -692,13 +1216,15 @@ public class RegisterNewStudent extends javax.swing.JFrame {
         
         jTextField6.setText(null);
         jTextField7.setText(null);
-        jTextField8.setText(null);
+        jTextField9.setText(null);
+        jTextField10.setText(null);
+        jTextField11.setText(null);
+        jTextField12.setText(null);
+        jTextField13.setText(null);
+                
+             
         
-        //Change Password
-        //UserID.setText(null);
-        //newUserName.setText(null);
-//        newPassword.setText(null);
-//        rePassword.setText(null);
+       
     }//GEN-LAST:event_Student_Clear_btnActionPerformed
 
     private void mathsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mathsActionPerformed
@@ -736,9 +1262,9 @@ public class RegisterNewStudent extends javax.swing.JFrame {
         st_subject="Physics|";
     }//GEN-LAST:event_physicsActionPerformed
 
-    private void Grade_select_allActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Grade_select_allActionPerformed
-        
-    }//GEN-LAST:event_Grade_select_allActionPerformed
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -767,8 +1293,7 @@ public class RegisterNewStudent extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+        
         
 
         /* Create and display the form */
@@ -780,7 +1305,6 @@ public class RegisterNewStudent extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Grade_select_all;
     private javax.swing.JButton Student_Clear_btn;
     private javax.swing.JButton Student_Register_Btn;
     private javax.swing.JCheckBox biology;
@@ -788,15 +1312,25 @@ public class RegisterNewStudent extends javax.swing.JFrame {
     private javax.swing.JCheckBox chemistry;
     private javax.swing.JCheckBox cmaths;
     private javax.swing.JCheckBox english;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox10;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox jCheckBox6;
+    private javax.swing.JCheckBox jCheckBox7;
+    private javax.swing.JCheckBox jCheckBox8;
+    private javax.swing.JCheckBox jCheckBox9;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
@@ -817,15 +1351,16 @@ public class RegisterNewStudent extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JCheckBox maths;
     private javax.swing.JLabel msgLabel;

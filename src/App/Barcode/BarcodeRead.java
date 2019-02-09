@@ -177,7 +177,7 @@ public class BarcodeRead extends javax.swing.JFrame {
         );
 
         jLabel3.setFont(new java.awt.Font("Good Times Rg", 1, 36)); // NOI18N
-        jLabel3.setText("Read Brcode - Student");
+        jLabel3.setText("Read Barcode - Student");
 
         jPanel5.setBackground(java.awt.Color.lightGray);
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DataBase Preveiw", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18))); // NOI18N

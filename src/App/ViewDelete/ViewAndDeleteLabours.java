@@ -144,7 +144,7 @@ public class ViewAndDeleteLabours extends javax.swing.JFrame {
         );
 
         jLabel3.setFont(new java.awt.Font("Good Times Rg", 1, 36)); // NOI18N
-        jLabel3.setText("View & Delete Page - Admin");
+        jLabel3.setText("View & Delete Page - Labour");
 
         jPanel5.setBackground(java.awt.Color.lightGray);
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DataBase Preveiw", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18))); // NOI18N
@@ -313,7 +313,7 @@ public class ViewAndDeleteLabours extends javax.swing.JFrame {
         if(jComboBox1.getSelectedIndex()==0){
             JOptionPane.showMessageDialog(rootPane, "Please Select an Option..");
         }else{
-            String logid,fname,lname,gender,bdate,no,street,city,nic,telno,email,accno,payid,usertype;
+            String logid,fname,lname,gender,bdate,no,street,city,nic,telno,occupation,accno,payid,usertype;
             try {
                 String str1=jTextField9.getText();
                 String sql="SELECT * FROM labour WHERE " +option.trim()+ "=?";
@@ -344,12 +344,11 @@ public class ViewAndDeleteLabours extends javax.swing.JFrame {
                         city=rs.getString("DOB");
                         nic=rs.getString("PhoneNo");
                         telno=rs.getString("NIC");
-                        email=rs.getString("Email");
-                        //usertype=rs.getString("UserType");
                         accno=rs.getString("AccNo");
                         payid=rs.getString("PaymentID");
+                        occupation=rs.getString("Occupation");
                         
-                        dtm.addRow(new Object[]{fname,lname,gender,bdate,no,street,city,nic,telno,email,logid,accno,payid});
+                        dtm.addRow(new Object[]{logid,fname,lname,gender,bdate,no,street,city,nic,telno,accno,payid,occupation});
                     } while (rs.next());
  
                 }

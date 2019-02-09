@@ -71,12 +71,13 @@ public class ViewAndDeleteTeachers extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
         Teacher_Delete_Btn = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -144,7 +145,7 @@ public class ViewAndDeleteTeachers extends javax.swing.JFrame {
         );
 
         jLabel3.setFont(new java.awt.Font("Good Times Rg", 1, 36)); // NOI18N
-        jLabel3.setText("View & Delete Page - Student");
+        jLabel3.setText("View & Delete Page - Teacher");
 
         jPanel5.setBackground(java.awt.Color.lightGray);
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DataBase Preveiw", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18))); // NOI18N
@@ -158,36 +159,6 @@ public class ViewAndDeleteTeachers extends javax.swing.JFrame {
                 jTextField9KeyReleased(evt);
             }
         });
-
-        jTable1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "First Name", "Last Name", "Gender", "No", "Street", "City", "DOB", "Phone No", "NIC", "Email", "Log ID", "User Type", "Payment ID", "Acc No", "Te. Grade", "Te. Subjects"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(80);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(80);
-        }
 
         jComboBox1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "User ID", "First Name", "Last Name", "NIC ", "Telephone No" }));
@@ -216,6 +187,38 @@ public class ViewAndDeleteTeachers extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Log ID", "First Name", "Last Name", "Gender", "No", "Street", "City", "DOB", "Phone No", "NIC", "Email", "Te. Grade", "Acc No", "Payment ID"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(1).setMinWidth(80);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(80);
+        }
+
+        jScrollPane2.setViewportView(jScrollPane1);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -223,26 +226,23 @@ public class ViewAndDeleteTeachers extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Teacher_Delete_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 619, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addContainerGap()
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Teacher_Delete_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,8 +252,8 @@ public class ViewAndDeleteTeachers extends javax.swing.JFrame {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextField9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -317,15 +317,15 @@ public class ViewAndDeleteTeachers extends javax.swing.JFrame {
             String logid,fname,lname,gender,bdate,no,street,city,nic,telno,email,accno,payid,usertype,tegrade,tesubjects;
             try {
                 String str1=jTextField9.getText();
-                //String sql="SELECT * FROM users WHERE " +option.trim()+ "=?";
-                String sql2="SELECT a.*, b.PaymentID, b.AccNo, b.TeGrade, b.TeSubjects FROM" +
-                            " users a" +
-                            " INNER JOIN" +
-                            " teacher b" +
-                            " ON a.LogId=b.LogTeacherId" +
-                            " WHERE "+option.trim()+"=?";
+                String sql="SELECT * FROM teacher WHERE " +option.trim()+ "=?";
+//                String sql2="SELECT a.*, b.PaymentID, b.AccNo, b.TeGrade, b.TeSubjects FROM" +
+//                            " users a" +
+//                            " INNER JOIN" +
+//                            " teacher b" +
+//                            " ON a.LogId=b.LogTeacherId" +
+//                            " WHERE "+option.trim()+"=?";
                            
-                pst=conn.prepareStatement(sql2);
+                pst=conn.prepareStatement(sql);
                 
                 pst.setString(1, str1);
                 
@@ -335,25 +335,23 @@ public class ViewAndDeleteTeachers extends javax.swing.JFrame {
                 
                 if(rs.next()){
                     do {                        
-                        
+                        logid=rs.getString("LogTeacherId");
                         fname=rs.getString("FName");
                         lname=rs.getString("LName");
                         gender=rs.getString("Gender");
-                        bdate=rs.getString("No");
-                        no=rs.getString("Street");
-                        street=rs.getString("City");
-                        city=rs.getString("DOB");
-                        nic=rs.getString("PhoneNo");
-                        telno=rs.getString("NIC");
+                        no=rs.getString("No");
+                        street=rs.getString("Street");
+                        city=rs.getString("City");
+                        bdate=rs.getString("DOB");
+                        telno=rs.getString("PhoneNo");
+                        nic=rs.getString("NIC");
                         email=rs.getString("Email");
-                        logid=rs.getString("LogId");
-                        usertype=rs.getString("UserType");
-                        payid=rs.getString("PaymentID");
+                        tegrade=rs.getString("Grade");
                         accno=rs.getString("AccNo");
-                        tegrade=rs.getString("TeGrade");
-                        tesubjects=rs.getString("TeSubjects");
+                        payid=rs.getString("PaymentID");
                         
-                        dtm.addRow(new Object[]{fname,lname,gender,bdate,no,street,city,nic,telno,email,logid,usertype,accno,payid,tegrade,tesubjects});
+                                              
+                        dtm.addRow(new Object[]{logid,fname,lname,gender,no,street,city,bdate,telno,nic,email,tegrade,accno,payid});
                     } while (rs.next());
  
                 }
@@ -376,7 +374,7 @@ public class ViewAndDeleteTeachers extends javax.swing.JFrame {
         }
         if(index == 1)
         {
-            option="LogId";
+            option="LogTeacherId";
         }
         if(index == 2)
         {
@@ -462,36 +460,7 @@ public class ViewAndDeleteTeachers extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -514,6 +483,7 @@ public class ViewAndDeleteTeachers extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;

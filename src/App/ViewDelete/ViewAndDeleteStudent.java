@@ -165,14 +165,14 @@ public class ViewAndDeleteStudent extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Student ID", "First Name", "Last Name", "Gender", "No", "Street", "City", "DOB", "Phone No", "NIC", "Email", "St. Grade"
+                "Student ID", "First Name", "Last Name", "Gender", "No", "Street", "City", "DOB", "Phone No", "NIC", "Email", "St. Grade", "Parent Name", "Parent TeNo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -314,18 +314,22 @@ public class ViewAndDeleteStudent extends javax.swing.JFrame {
         if(jComboBox1.getSelectedIndex()==0){
             JOptionPane.showMessageDialog(rootPane, "Please Select an Option..");
         }else{
-            String studentid,fname,lname,gender,bdate,no,street,city,nic,telno,email,stgrade,logteacherid;
+            String studentid,fname,lname,gender,bdate,no,street,city,nic,telno,email,stgrade,parentname,ptno;
             try {
                 String str1=jTextField9.getText();
-                String sql="SELECT * FROM student WHERE " +option.trim()+ "=?";
-//                String sql2="SELECT a.*, b.SubjectId FROM" +
-//                            " student a" +
-//                            " INNER JOIN" +
-//                            " subject b" +
-//                            " ON a.StudentId=b.StudentSubId" +
-//                            " WHERE "+option.trim()+"=?";
+//                String sql = "SELECT StudentId,FName,LName,Gender,No,Street,City,DOB,PhoneNo,NIC,Email,Grade FROM student" +
+//                             "UNION" +
+//                             "SELECT pname,ptelNo FROM parent "
+//                            + "WHERE StudentId=?";
+                //String sql="select * from student,parent where student.StudentId=parent.StudentId where "+option.trim()+"=?";
+                String sql2="SELECT a.*, b.pname, b.ptelNo FROM" +
+                            " student a" +
+                            " INNER JOIN" +
+                            " parent b" +
+                            " ON a.StudentId=b.StudentsId" +
+                            " WHERE "+option.trim()+"=?";
                            
-                pst=conn.prepareStatement(sql);
+                pst=conn.prepareStatement(sql2);
                 
                 pst.setString(1, str1);
                 
@@ -346,13 +350,13 @@ public class ViewAndDeleteStudent extends javax.swing.JFrame {
                         nic=rs.getString("PhoneNo");
                         telno=rs.getString("NIC");
                         email=rs.getString("Email");
-                        stgrade=rs.getString("StGrade");
-                        //logteacherid=rs.getString("LogTeacherId");
-                        //accno=rs.getString("AccNo");
+                        stgrade=rs.getString("Grade");
+                        parentname=rs.getString("pname");
+                        ptno=rs.getString("ptelNo");
                         //tegrade=rs.getString("TeGrade");
                         //tesubjects=rs.getString("TeSubjects");
                         
-                        dtm.addRow(new Object[]{fname,lname,gender,bdate,no,street,city,nic,telno,email,studentid,stgrade});
+                        dtm.addRow(new Object[]{studentid,fname,lname,gender,bdate,no,street,city,nic,telno,email,stgrade,parentname,ptno});
                     } while (rs.next());
  
                 }

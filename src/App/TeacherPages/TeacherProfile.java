@@ -178,7 +178,6 @@ public class TeacherProfile extends javax.swing.JFrame {
         );
 
         jLabel3.setFont(new java.awt.Font("Good Times Rg", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(36, 47, 65));
         jLabel3.setText("My Profile - Admin");
 
         Admin_Clear_btn.setBackground(new java.awt.Color(255, 255, 255));

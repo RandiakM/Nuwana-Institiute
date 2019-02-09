@@ -165,14 +165,14 @@ public class ViewAndDeleteClerks extends javax.swing.JFrame {
 
             },
             new String [] {
-                "First Name", "Last Name", "Gender", "No", "Street", "City", "DOB", "PhoneNo", "NIC", "Email", "Log ID", "User Type", "Acc No", "Payment ID"
+                "Log ID", "First Name", "Last Name", "Gender", "No", "Street", "City", "DOB", "PhoneNo", "NIC", "Email", "Acc No", "Payment ID"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -185,14 +185,14 @@ public class ViewAndDeleteClerks extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(80);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(80);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(60);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(60);
-            jTable1.getColumnModel().getColumn(3).setMinWidth(50);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(50);
-            jTable1.getColumnModel().getColumn(12).setMinWidth(70);
-            jTable1.getColumnModel().getColumn(12).setMaxWidth(70);
+            jTable1.getColumnModel().getColumn(1).setMinWidth(80);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(80);
+            jTable1.getColumnModel().getColumn(3).setMinWidth(60);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(60);
+            jTable1.getColumnModel().getColumn(4).setMinWidth(50);
+            jTable1.getColumnModel().getColumn(4).setMaxWidth(50);
+            jTable1.getColumnModel().getColumn(11).setMinWidth(70);
+            jTable1.getColumnModel().getColumn(11).setMaxWidth(70);
         }
 
         jComboBox1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
@@ -324,18 +324,18 @@ public class ViewAndDeleteClerks extends javax.swing.JFrame {
         if(jComboBox1.getSelectedIndex()==0){
             JOptionPane.showMessageDialog(rootPane, "Please Select an Option..");
         }else{
-            String logid,fname,lname,gender,bdate,no,street,city,nic,telno,email,accno,payid,usertype;
+            String logid,fname,lname,gender,bdate,no,street,city,nic,telno,email,accno,payid;
             try {
                 String str1=jTextField9.getText();
-                //String sql="SELECT * FROM users WHERE " +option.trim()+ "=?";
-                String sql2="SELECT a.*, b.AccNo, b.PaymentID FROM" +
-                            " users a" +
-                            " INNER JOIN" +
-                            " clerk b" +
-                            " ON a.LogId=b.LogClerkId" +
-                            " WHERE "+option.trim()+"=?";
+                String sql="SELECT * FROM clerk WHERE " +option.trim()+ "=?";
+//                String sql2="SELECT a.*, b.AccNo, b.PaymentID FROM" +
+//                            " users a" +
+//                            " INNER JOIN" +
+//                            " clerk b" +
+//                            " ON a.LogId=b.LogClerkId" +
+//                            " WHERE "+option.trim()+"=?";
                            
-                pst=conn.prepareStatement(sql2);
+                pst=conn.prepareStatement(sql);
                 
                 pst.setString(1, str1);
                 
@@ -345,7 +345,7 @@ public class ViewAndDeleteClerks extends javax.swing.JFrame {
                 
                 if(rs.next()){
                     do {                        
-                        
+                        logid=rs.getString("LogClerkId");
                         fname=rs.getString("FName");
                         lname=rs.getString("LName");
                         gender=rs.getString("Gender");
@@ -356,12 +356,10 @@ public class ViewAndDeleteClerks extends javax.swing.JFrame {
                         nic=rs.getString("PhoneNo");
                         telno=rs.getString("NIC");
                         email=rs.getString("Email");
-                        logid=rs.getString("LogId");
-                        usertype=rs.getString("UserType");
                         accno=rs.getString("AccNo");
                         payid=rs.getString("PaymentID");
                         
-                        dtm.addRow(new Object[]{fname,lname,gender,bdate,no,street,city,nic,telno,email,logid,usertype,accno,payid});
+                        dtm.addRow(new Object[]{logid,fname,lname,gender,bdate,no,street,city,nic,telno,email,accno,payid});
                     } while (rs.next());
  
                 }
@@ -384,7 +382,7 @@ public class ViewAndDeleteClerks extends javax.swing.JFrame {
         }
         if(index == 1)
         {
-            option="LogId";
+            option="LogClerkId";
         }
         if(index == 2)
         {
@@ -415,7 +413,7 @@ public class ViewAndDeleteClerks extends javax.swing.JFrame {
         String delteacher=jTextField10.getText();
         
         String sql1="DELETE FROM users WHERE LogId=?";
-        String sql2="DELETE FROM clerk WHERE UID=?";
+        String sql2="DELETE FROM clerk WHERE LogClerkId=?";
         //String sql3="DELETE FROM register WHERE NIC=?";
         
         

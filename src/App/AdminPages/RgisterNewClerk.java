@@ -5,11 +5,13 @@
  */
 package App.AdminPages;
 
+import App.AdminPages.*;
 import App.Login.*;
 import App.*;
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,16 +29,7 @@ import sun.security.util.Password;
  */
 public class RgisterNewClerk extends javax.swing.JFrame {
 
-    Connection conn=null;
-    ResultSet rs=null;
-    PreparedStatement pst =null;
-    PreparedStatement pst1 =null;
-    PreparedStatement pst2 =null;
-    PreparedStatement pst3 =null;
-    ResultSet rs1=null;
-    
-    ResultSet rs2=null;
-    ResultSet rs3=null;
+   
     
     String EnPass;
     
@@ -54,7 +47,7 @@ public class RgisterNewClerk extends javax.swing.JFrame {
         String telno;
         String nic;
         String email;
-        String createid;
+        String clkid;
         String accno;
         String payid;
         //Change Password
@@ -75,12 +68,8 @@ public class RgisterNewClerk extends javax.swing.JFrame {
         int ysize=(int) tk.getScreenSize().getHeight()/2;
         this.setSize(xsize, ysize);
         
-        conn=DAC.ConnectDb();
-        jPanel5.setVisible(false);
-        
-         CmbBox_UserType.setVisible(false);
-        jLabel16.setVisible(false);
-        
+       
+      
         
     }
 
@@ -102,7 +91,7 @@ public class RgisterNewClerk extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        Admin_Register_Btn = new javax.swing.JButton();
+        Clerk_Register_Btn = new javax.swing.JButton();
         Admin_Clear_btn = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
@@ -129,20 +118,8 @@ public class RgisterNewClerk extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel15 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        CmbBox_UserType = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        Grade_select = new javax.swing.JComboBox<>();
-        maths = new javax.swing.JCheckBox();
-        science = new javax.swing.JCheckBox();
-        english = new javax.swing.JCheckBox();
-        cmaths = new javax.swing.JCheckBox();
-        biology = new javax.swing.JCheckBox();
-        chemistry = new javax.swing.JCheckBox();
-        physics = new javax.swing.JCheckBox();
         jLabel19 = new javax.swing.JLabel();
         jTextField11 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
@@ -184,22 +161,19 @@ public class RgisterNewClerk extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                        .addGap(10, 10, 10)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,16 +192,15 @@ public class RgisterNewClerk extends javax.swing.JFrame {
         );
 
         jLabel3.setFont(new java.awt.Font("Good Times Rg", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(36, 47, 65));
         jLabel3.setText("Register New Clerk");
 
-        Admin_Register_Btn.setBackground(new java.awt.Color(255, 255, 255));
-        Admin_Register_Btn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        Admin_Register_Btn.setText("Register");
-        Admin_Register_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Admin_Register_Btn.addActionListener(new java.awt.event.ActionListener() {
+        Clerk_Register_Btn.setBackground(new java.awt.Color(255, 255, 255));
+        Clerk_Register_Btn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        Clerk_Register_Btn.setText("Register");
+        Clerk_Register_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Clerk_Register_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Admin_Register_BtnActionPerformed(evt);
+                Clerk_Register_BtnActionPerformed(evt);
             }
         });
 
@@ -309,112 +282,10 @@ public class RgisterNewClerk extends javax.swing.JFrame {
         jTextField9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jTextField9.setText("CLK-");
 
-        jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel16.setText("User Type");
-
-        CmbBox_UserType.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        CmbBox_UserType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Admin", "Clerk", "Teacher", "Student" }));
-        CmbBox_UserType.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        CmbBox_UserType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CmbBox_UserTypeActionPerformed(evt);
-            }
-        });
-
         jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         jLabel17.setText("Acc No");
 
         jTextField10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-
-        jPanel5.setBackground(new java.awt.Color(189, 183, 107));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Grade & Subjects", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18), java.awt.Color.darkGray)); // NOI18N
-
-        jLabel18.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        jLabel18.setText("Grade");
-
-        Grade_select.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        Grade_select.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "6 to 9", "10 to 11", "A/L", "Revision" }));
-        Grade_select.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Grade_selectActionPerformed(evt);
-            }
-        });
-
-        maths.setBackground(new java.awt.Color(189, 183, 107));
-        maths.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        maths.setText("Maths");
-
-        science.setBackground(new java.awt.Color(189, 183, 107));
-        science.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        science.setText("Science");
-
-        english.setBackground(new java.awt.Color(189, 183, 107));
-        english.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        english.setText("English");
-
-        cmaths.setBackground(new java.awt.Color(189, 183, 107));
-        cmaths.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        cmaths.setText("C.Maths");
-
-        biology.setBackground(new java.awt.Color(189, 183, 107));
-        biology.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        biology.setText("Biology");
-
-        chemistry.setBackground(new java.awt.Color(189, 183, 107));
-        chemistry.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        chemistry.setText("Chemistry");
-
-        physics.setBackground(new java.awt.Color(189, 183, 107));
-        physics.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        physics.setText("Physics");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Grade_select, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(science, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(maths, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(english, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmaths, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(biology, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(chemistry, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(physics, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(Grade_select))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(maths)
-                    .addComponent(cmaths))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(science)
-                    .addComponent(biology))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(english)
-                    .addComponent(chemistry))
-                .addGap(18, 18, 18)
-                .addComponent(physics)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         jLabel19.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         jLabel19.setText("Payment ID");
@@ -473,91 +344,76 @@ public class RgisterNewClerk extends javax.swing.JFrame {
                             .addComponent(jTextField8))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel19))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(14, 14, 14)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(CmbBox_UserType, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jTextField10)
                             .addComponent(jTextField11)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(13, 13, 13)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel15)
-                                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(13, 13, 13)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(82, 82, 82))
-                                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jLabel6)
-                                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGap(18, 18, 18)
-                                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                            .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                            .addComponent(jRadioButton2)))
-                                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, Short.MAX_VALUE)))
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel8)
-                                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(26, 26, 26)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField6)
-                                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                                            .addComponent(CmbBox_UserType)))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(82, 82, 82))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jRadioButton2)))
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, Short.MAX_VALUE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField6)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -603,7 +459,7 @@ public class RgisterNewClerk extends javax.swing.JFrame {
                             .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
+                            .addComponent(newPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
                             .addComponent(rePassword))))
                 .addGap(220, 220, 220))
         );
@@ -636,24 +492,23 @@ public class RgisterNewClerk extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGap(279, 279, 279)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(msgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(140, 140, 140)
-                                .addComponent(Admin_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Admin_Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(307, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(msgLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1063, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(216, 216, 216)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(395, Short.MAX_VALUE))))
+                                .addGap(698, 698, 698)
+                                .addComponent(msgLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(msgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Clerk_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(Admin_Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 849, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -661,17 +516,20 @@ public class RgisterNewClerk extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(msgLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Admin_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Admin_Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(msgLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Admin_Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Clerk_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addComponent(msgLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(msgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(32, 32, 32))
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("");
@@ -680,7 +538,7 @@ public class RgisterNewClerk extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -690,9 +548,10 @@ public class RgisterNewClerk extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Admin_Register_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_Register_BtnActionPerformed
+    private void Clerk_Register_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clerk_Register_BtnActionPerformed
         
         //basic details
+        clkid = jTextField9.getText();
         fname=jTextField1.getText();
         lname=jTextField2.getText();
         gender=jRadioButton1.isSelected()?"Male":"Female";
@@ -706,7 +565,6 @@ public class RgisterNewClerk extends javax.swing.JFrame {
         telno=jTextField6.getText();
         nic=jTextField7.getText();
         email=jTextField8.getText();
-        createid=jTextField9.getText();
         accno=jTextField10.getText();
         payid=jTextField11.getText();
         //Change Password
@@ -720,6 +578,10 @@ public class RgisterNewClerk extends javax.swing.JFrame {
         AESencrp ePass= new AESencrp();
         
         try {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/nuwana","root","");
+        Statement stmt = con.createStatement();
+        
              EnPass=ePass.encrypt(newpassword);
         } catch (Exception ex) {
             Logger.getLogger(RgisterNewClerk.class.getName()).log(Level.SEVERE, null, ex);
@@ -731,65 +593,54 @@ public class RgisterNewClerk extends javax.swing.JFrame {
         
         
         try{
-            String sql="INSERT INTO users(FName, LName, Gender, No, Street, City,DOB, PhoneNo,NIC,Email,LogId,UserType) "
-                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-       
-        //String sql2="UPDATE login SET UserName='"+newUserName.getText()+"',Password='"+newPassword.getText()+"' WHERE UID='"+UserID.getText()+"'";
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/nuwana","root","");
+        Statement stmt = con.createStatement();
         
-        String sql3="INSERT INTO clerk(LogClerkId, AccNo,PaymentID) "
-                + "VALUES (?,?,?)";
-        String sql4="INSERT INTO login(LogId,Password,Activated) "
-                + "VALUES (?,?,?)";
-   
-        pst=conn.prepareStatement(sql);   
-        pst.setString(1, fname);
-        pst.setString(2, lname);
-        pst.setString(3, gender);
-        pst.setString(4, no);
-        pst.setString(5, street);
-        pst.setString(6, city);
-        pst.setString(7, bdate);
-        pst.setString(8, telno);
-        pst.setString(9, nic);
-        pst.setString(10, email);
-        pst.setString(11, createid);
-        //String value=CmbBox_UserType.getSelectedItem().toString();  
-        pst.setString(12, "Clerk");
-        pst.execute();
-       msgLabel.setText("Added data to the users table...");
-
-       
-       pst1=conn.prepareStatement(sql3);
-       pst1.setString(1, createid);
-       pst1.setString(2, accno);
-       pst1.setString(3, payid);
-       pst1.execute();
-       
-       pst2=conn.prepareStatement(sql4);
-       pst2.setString(1, createid);
-       pst2.setString(2, newpassword);
-       pst2.setString(3, "1");
-       pst2.execute();
-       //msgLabel.setText("Added your data..");
+        String query = "SELECT LogAdminId from admin";
+        ResultSet rs = stmt.executeQuery(query);
+        rs.next();
+        String admid = rs.getString("LogAdminId");
         
         
-        Admin_Register_Btn.setVisible(false);
+        String sql1="INSERT INTO clerk(LogClerkId,FName, LName, Gender, No, Street, City,DOB, PhoneNo,NIC,Email,PaymentID,AccNo,LogAdminId) VALUES "
+                + "('"+clkid+"','"+fname+"','"+lname+"','"+gender+"','"+no+"','"+street+"','"+city+"','"+bdate+"','"+telno+"','"+nic+"','"+email+"','"+payid+"','"+accno+"','"+admid+"')";
+        int n1 = stmt.executeUpdate(sql1);
+        
+        if(n1>0){   
+        String sql2="INSERT INTO users(FName, LName, Gender, No, Street, City,DOB, PhoneNo,NIC,Email,LogId) "
+                + "VALUES ('"+fname+"','"+lname+"','"+gender+"','"+no+"','"+street+"','"+city+"','"+bdate+"','"+telno+"','"+nic+"','"+email+"','"+clkid+"')";          
+        int A = stmt.executeUpdate(sql2);
+       
+        String sql3="INSERT INTO login(LogId,Password,Activated) VALUES('"+clkid+"','"+newpassword+"','"+1+"')";
+        int B = stmt.executeUpdate(sql3);
+     
+     
+        JOptionPane.showMessageDialog(rootPane,"Registration Successfully.....");
+        msgLabel.setText("Added data to the users table.");
+        Clerk_Register_Btn.setVisible(false);
+        }
+    
+        else{
+        JOptionPane.showMessageDialog(rootPane,"Registration not Successfull....."); 
+        }
+        
         
         }
         catch(Exception e1){
-            e1.printStackTrace();
-        //JOptionPane.showMessageDialog(rootPane ,e1);
+        JOptionPane.showMessageDialog(rootPane ,e1);
         }
+        
+        
         finally {
 
             try {
 
-                rs.close();
-                pst.close();
+               // rs.close();
+               //pst.close();
 
             } catch (Exception e) {
-                e.printStackTrace();
-                //JOptionPane.showMessageDialog(rootPane ,e);
+                JOptionPane.showMessageDialog(rootPane ,e);
             }
 
         }
@@ -803,7 +654,7 @@ public class RgisterNewClerk extends javax.swing.JFrame {
          else{
              msgLabel.setText("Enter a Strong password");
          }         
-    }//GEN-LAST:event_Admin_Register_BtnActionPerformed
+    }//GEN-LAST:event_Clerk_Register_BtnActionPerformed
 
     private void Admin_Clear_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_Clear_btnActionPerformed
         
@@ -829,124 +680,6 @@ public class RgisterNewClerk extends javax.swing.JFrame {
     private void Admin_Register_Btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_Register_Btn2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Admin_Register_Btn2ActionPerformed
-
-    private void Grade_selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Grade_selectActionPerformed
-        
-        //basic details
-//        String fname=jTextField1.getText();
-//        String lname=jTextField2.getText();
-//        String gender=jRadioButton1.isSelected()?"Male":"Female";
-//        String no=jTextField3.getText();
-//        String street=jTextField4.getText();
-//        String city=jTextField5.getText();
-//        //date format
-//        SimpleDateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd");
-//        String bdate=dateformat.format(jDateChooser1.getDate());
-//               
-//        String telno=jTextField6.getText();
-//        String nic=jTextField7.getText();
-//        String email=jTextField8.getText();
-//        String createid=jTextField9.getText();
-//        String accno=jTextField10.getText();
-//        //Change Password
-//        //String uid=UserID.getText();
-//        //String newusername=newUserName.getText();
-//        String newpassword=String.valueOf(newPassword.getPassword());
-//        String repassword=String.valueOf(rePassword.getPassword());
-//        
-//        String m6_9="";
-        
-        if(Grade_select.getSelectedIndex()==0){
-            maths.setVisible(false);
-            science.setVisible(false);
-            english.setVisible(false);
-            cmaths.setVisible(false);
-            biology.setVisible(false);
-            chemistry.setVisible(false);
-            physics.setVisible(false);
-        }else if(Grade_select.getSelectedIndex()==1){
-            maths.setVisible(true);
-            science.setVisible(true);
-            english.setVisible(true);
-            cmaths.setVisible(false);
-            biology.setVisible(false);
-            chemistry.setVisible(false);
-            physics.setVisible(false);
-        }else if(Grade_select.getSelectedIndex()==2){
-            maths.setVisible(true);
-            science.setVisible(true);
-            english.setVisible(true);
-            cmaths.setVisible(false);
-            biology.setVisible(false);
-            chemistry.setVisible(false);
-            physics.setVisible(false);
-        }else if(Grade_select.getSelectedIndex()==3){
-            maths.setVisible(false);
-            science.setVisible(false);
-            english.setVisible(false);
-            cmaths.setVisible(true);
-            biology.setVisible(true);
-            chemistry.setVisible(true);
-            physics.setVisible(true);
-        }else if(Grade_select.getSelectedIndex()==4){
-            maths.setVisible(false);
-            science.setVisible(false);
-            english.setVisible(false);
-            cmaths.setVisible(true);
-            biology.setVisible(true);
-            chemistry.setVisible(true);
-            physics.setVisible(true);
-        }
-        /*
-        if(maths.isSelected()){
-            m6_9+=maths.getText()+"|";
-        }
-        String sql="INSERT INTO student(LogId,FName, LName, Gender, No, Street, City,DOB, PhoneNo,NIC,Email,Grade,Subjects) "
-                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        
-        try {
-             pst3=conn.prepareStatement(sql);   
-        pst3.setString(1, createid);
-        pst3.setString(2, fname);
-        pst3.setString(3, lname);
-        pst3.setString(4, gender);
-        pst3.setString(5, no);
-        pst3.setString(6, street);
-        pst3.setString(7, city);
-        pst3.setString(8, bdate);
-        pst3.setString(9, telno);
-        pst3.setString(10, nic);
-        pst3.setString(11, email);
-        String value=Grade_select.getSelectedItem().toString();  
-        pst3.setString(12, value);
-        pst3.setString(13, m6_9);
-        pst3.execute();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, e.getMessage());
-        }finally {
-            try {
-                pst3.close();
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, e.getMessage());
-            }
-
-        }
-        */
-    }//GEN-LAST:event_Grade_selectActionPerformed
-
-    private void CmbBox_UserTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbBox_UserTypeActionPerformed
-
-//        if(CmbBox_UserType.getSelectedIndex()==4){
-//            jLabel17.setVisible(false);
-//            jTextField10.setVisible(false);
-//            jPanel5.setVisible(true);
-//
-//        }else if(CmbBox_UserType.getSelectedIndex()!=4){
-//            jPanel5.setVisible(false);
-//        }
-
-    }//GEN-LAST:event_CmbBox_UserTypeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -977,16 +710,6 @@ public class RgisterNewClerk extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         
 
         /* Create and display the form */
@@ -999,15 +722,9 @@ public class RgisterNewClerk extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Admin_Clear_btn;
-    private javax.swing.JButton Admin_Register_Btn;
     private javax.swing.JButton Admin_Register_Btn2;
-    private javax.swing.JComboBox<String> CmbBox_UserType;
-    private javax.swing.JComboBox<String> Grade_select;
-    private javax.swing.JCheckBox biology;
+    private javax.swing.JButton Clerk_Register_Btn;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JCheckBox chemistry;
-    private javax.swing.JCheckBox cmaths;
-    private javax.swing.JCheckBox english;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1016,9 +733,7 @@ public class RgisterNewClerk extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
@@ -1034,7 +749,6 @@ public class RgisterNewClerk extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JSeparator jSeparator1;
@@ -1051,12 +765,9 @@ public class RgisterNewClerk extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
-    private javax.swing.JCheckBox maths;
     private javax.swing.JLabel msgLabel;
     private javax.swing.JLabel msgLabel1;
     private javax.swing.JPasswordField newPassword;
-    private javax.swing.JCheckBox physics;
     private javax.swing.JPasswordField rePassword;
-    private javax.swing.JCheckBox science;
     // End of variables declaration//GEN-END:variables
 }

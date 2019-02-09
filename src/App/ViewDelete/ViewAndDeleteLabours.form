@@ -208,7 +208,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Good Times Rg" size="36" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="View &amp; Delete Page - Admin"/>
+            <Property name="text" type="java.lang.String" value="View &amp; Delete Page - Labour"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel5">

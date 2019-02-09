@@ -3,28 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package App.ViewDelete;
+package App.Attendance;
 
-//import App.Teacher.*;
+import App.Barcode.*;
 import App.DAC;
-//import App.Clerk.*;
-import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JOptionPane;
+import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.UIManager;
 
 /**
  *
- * @author Randika
+ * @author Randika Madhushan
  */
-public class ViewAndDeleteTest extends javax.swing.JFrame {
+public class BarcodeAttendenceTest extends javax.swing.JFrame {
 
     /**
-     * Creates new form ViewTeacher
+     * Creates new form BarcodeRead
      */
-    String option;
     DefaultTableModel dtm;
     
     Connection conn=null;
@@ -33,22 +32,61 @@ public class ViewAndDeleteTest extends javax.swing.JFrame {
     PreparedStatement pst1 =null;
     PreparedStatement pst2 =null;
     PreparedStatement pst3 =null;
-    
-    public ViewAndDeleteTest() {
-        this.setUndecorated(false);
-        this.setAlwaysOnTop(true);
-        this.setResizable(true);
-        this.setVisible(false);
+    public BarcodeAttendenceTest() {
         initComponents();
         
-        Toolkit tk=Toolkit.getDefaultToolkit();
-        int xsize=(int) tk.getScreenSize().getWidth()/2;
-        int ysize=(int) tk.getScreenSize().getHeight()/2;
-        this.setSize(xsize, ysize);
-        
         conn=DAC.ConnectDb();
+    }
+    
+     public void listed()
+    {
+        DefaultTableModel table = new DefaultTableModel();
         
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        table.addColumn("Student ID");
+        table.addColumn("Student Grade");
+        table.addColumn("Student Subjects");
+        table.addColumn("Amount");
+        table.addColumn("Last Pay Date");
+//        table.addColumn("Street");
+//        table.addColumn("DOB");
+//        table.addColumn("Phone NO");
+//        table.addColumn("NIC");
+//        table.addColumn("Email");
+//        table.addColumn("St. Grade");
+        
+        try
+        {
+            Connection con = DAC.ConnectDb();
+            
+            String sql = "SELECT * FROM fees";
+            //pst=conn.prepareStatement(sql);
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            //ResultSet rs=pst.executeQuery();
+            
+            while(rs.next())
+            {
+                table.addRow(new Object[]{
+                    //rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+//                    rs.getString(7),
+//                    rs.getString(8),
+//                    rs.getString(9),
+//                    rs.getString(10),
+//                    rs.getString(11),
+                    //rs.getString(12),
+                        
+                });
+            }
+            jTable1.setModel(table);
+        }
+        catch(Exception e){
+    
+}
     }
 
     /**
@@ -70,42 +108,35 @@ public class ViewAndDeleteTest extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextField9 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel17 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        Teacher_Delete_Btn = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(189, 183, 107));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jPanel2.setBackground(java.awt.Color.darkGray);
+        jPanel2.setBackground(java.awt.Color.lightGray);
 
         jLabel1.setBackground(new java.awt.Color(97, 212, 195));
         jLabel1.setFont(new java.awt.Font("Engravers MT", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("NUWANA");
 
         jLabel2.setBackground(new java.awt.Color(97, 212, 195));
         jLabel2.setFont(new java.awt.Font("Engravers MT", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("INSTITUTE");
 
         jLabel4.setBackground(new java.awt.Color(97, 212, 195));
         jLabel4.setFont(new java.awt.Font("Edwardian Script ITC", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("\"Beyond the Norm\"");
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
+        jSeparator1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         jSeparator3.setBackground(new java.awt.Color(36, 47, 65));
         jSeparator3.setForeground(new java.awt.Color(36, 47, 65));
-        jSeparator3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        jSeparator3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -147,99 +178,112 @@ public class ViewAndDeleteTest extends javax.swing.JFrame {
         );
 
         jLabel3.setFont(new java.awt.Font("Good Times Rg", 1, 36)); // NOI18N
-        jLabel3.setText("View & Update Page - Clerk");
+        jLabel3.setText("Read Barcode - Student");
 
-        jPanel5.setBackground(java.awt.Color.darkGray);
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DataBase Preveiw", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel5.setBackground(java.awt.Color.lightGray);
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DataBase Preveiw", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18))); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Select Option");
+        jLabel16.setText("Scan ID");
 
-        jTable1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jTextField9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField9KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField9KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField9KeyTyped(evt);
+            }
+        });
+
+        jTable1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "First Name", "Account No"
+                "Student ID", "Student Grade", "Student Subjects", "Amount", "Last Pay Date"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class
-            };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(80);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(80);
+            jTable1.getColumnModel().getColumn(0).setHeaderValue("Student ID");
+            jTable1.getColumnModel().getColumn(1).setHeaderValue("Student Grade");
+            jTable1.getColumnModel().getColumn(2).setHeaderValue("Student Subjects");
+            jTable1.getColumnModel().getColumn(3).setHeaderValue("Amount");
+            jTable1.getColumnModel().getColumn(4).setHeaderValue("Last Pay Date");
         }
-
-        jLabel17.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("ID or NIC");
-
-        jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField10KeyReleased(evt);
-            }
-        });
-
-        Teacher_Delete_Btn.setBackground(new java.awt.Color(255, 255, 255));
-        Teacher_Delete_Btn.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        Teacher_Delete_Btn.setText("Delete");
-        Teacher_Delete_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Teacher_Delete_Btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Teacher_Delete_BtnActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("jButton1");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Teacher_Delete_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(237, 237, 237)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(299, 299, 299)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -248,17 +292,10 @@ public class ViewAndDeleteTest extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(jTextField1)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                        .addGap(5, 5, 5))
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(Teacher_Delete_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField9))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -271,7 +308,7 @@ public class ViewAndDeleteTest extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 248, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -306,66 +343,109 @@ public class ViewAndDeleteTest extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField10KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10KeyReleased
+    private void jTextField9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyReleased
 
-    private void Teacher_Delete_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Teacher_Delete_BtnActionPerformed
+        //KeyRelased
         
-        String delteacher=jTextField10.getText();
+         if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+        {
+        DefaultTableModel table = new DefaultTableModel();
         
-        String sql1="DELETE FROM users WHERE LogId=?";
-        String sql2="DELETE FROM clerk WHERE UID=?";
-        //String sql3="DELETE FROM register WHERE NIC=?";
+        table.addColumn("Student ID");
+        table.addColumn("Student Grade");
+        table.addColumn("Student Subjects");
+        table.addColumn("Amount");
+        table.addColumn("Last Pay Date");
         
-        
-        try {
+        try
+        {
             
-            pst1=conn.prepareStatement(sql1);
-            pst2=conn.prepareStatement(sql2);
-            //pst3=conn.prepareStatement(sql2);
-               
-            pst1.setString(1, delteacher);
-            pst1.executeUpdate();
-            pst1.close();
+            String sql1 = "SELECT * FROM fees WHERE StudentId='"+jTextField9.getText()+"'";
+            Statement st = DAC.ConnectDb().createStatement();
+            ResultSet rs = st.executeQuery(sql1);
             
-            pst2.setString(1, delteacher);
-            pst2.executeUpdate();
-            pst2.close();
-            
-//            pst3.setString(1, delteacher);
-//            pst3.executeUpdate();
-//            pst3.close();
-            JOptionPane.showMessageDialog(rootPane, "Done deleted");
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+            while(rs.next())
+            {
+                table.addRow(new Object[]{
+                    //rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+//                    rs.getString(7),
+//                    rs.getString(8),
+//                    rs.getString(9),
+//                    rs.getString(10),
+//                    rs.getString(11),
+                    
+                        
+                });
+            }
+            jTable1.setModel(table);
         }
-    }//GEN-LAST:event_Teacher_Delete_BtnActionPerformed
+        catch(Exception e){
+    
+}
+        }
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        
-        String clkid =jTextField1.getText();
-        
-        String sql="SELECT FName, AccNo\n" +
-                   "FROM users, clerk\n" +
-                   "WHERE users.LogId = clerk.LogId";
-        
-        try {
-             pst=conn.prepareStatement(sql);   
-             //pst.setString(1, fname);
-             pst.executeQuery();
-             DefaultTableModel tm=(DefaultTableModel)jTable1.getModel();
-             tm.setRowCount(0);
-                while(rs.next()){
-                    Object o[]={rs.getString("FName"),rs.getString("AccNo")};
-                    tm.addRow(o);
-                }
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane,e.getMessage());
+    }//GEN-LAST:event_jTextField9KeyReleased
+
+    private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
+        if("".equals(jTextField9.getText())){
+            listed();
         }
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_jTextField9KeyTyped
+
+    private void jTextField9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyPressed
+//        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+//        {
+//        DefaultTableModel table = new DefaultTableModel();
+//        
+//        table.addColumn("Student ID");
+//        table.addColumn("First Name");
+//        table.addColumn("Last Name");
+//        table.addColumn("Gender");
+//        table.addColumn("No");
+//        table.addColumn("Street");
+//        table.addColumn("DOB");
+//        table.addColumn("Phone NO");
+//        table.addColumn("NIC");
+//        table.addColumn("Email");
+//        table.addColumn("St. Grade");
+//        
+//        try
+//        {
+//            
+//            String sql = "SELECT * FROM student WHERE code='"+jTextField9.getText()+"'";
+//            Statement st = DAC.ConnectDb().createStatement();
+//            ResultSet rs = st.executeQuery(sql);
+//            
+//            while(rs.next())
+//            {
+//                table.addRow(new Object[]{
+//                    rs.getString(1),
+//                    rs.getString(2),
+//                    rs.getString(3),
+//                    rs.getString(4),
+//                    rs.getString(5),
+//                    rs.getString(6),
+//                    rs.getString(7),
+//                    rs.getString(8),
+//                    rs.getString(9),
+//                    rs.getString(10),
+//                    rs.getString(11),
+//                    
+//                        
+//                });
+//            }
+//            jTable1.setModel(table);
+//        }
+//        catch(Exception e){
+//    
+//}
+//        }
+    }//GEN-LAST:event_jTextField9KeyPressed
 
     /**
      * @param args the command line arguments
@@ -384,48 +464,38 @@ public class ViewAndDeleteTest extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewAndDeleteTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BarcodeAttendenceTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewAndDeleteTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BarcodeAttendenceTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewAndDeleteTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BarcodeAttendenceTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewAndDeleteTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BarcodeAttendenceTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewAndDeleteTest().setVisible(true);
+                new BarcodeAttendenceTest().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Teacher_Delete_Btn;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

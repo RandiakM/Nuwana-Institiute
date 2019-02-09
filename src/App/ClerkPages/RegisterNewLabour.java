@@ -485,7 +485,7 @@ public class RegisterNewLabour extends javax.swing.JFrame {
        
       try {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/nuwana?","root","");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/nuwana","root","");
         Statement stmt = con.createStatement();
           
         String query = "SELECT  LogClerkId from clerk";
@@ -499,7 +499,9 @@ public class RegisterNewLabour extends javax.swing.JFrame {
         int n1 = stmt.executeUpdate(sql1);
         
         if(n1>0){
-        JOptionPane.showMessageDialog(rootPane,"Registration Successfully.....");
+        //JOptionPane.showMessageDialog(rootPane,"Registration Successfully.....");
+        msgLabel.setText("Registration Successfully.");
+        //Labour_Register_Btn.setVisible(false);
         }
         else{
         JOptionPane.showMessageDialog(rootPane,"Registration not Successfull....."); 

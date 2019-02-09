@@ -76,7 +76,7 @@ public class ViewAndDeleteAdmins extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
-        Teacher_Delete_Btn = new javax.swing.JButton();
+        Admin_Delete_Btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -165,14 +165,14 @@ public class ViewAndDeleteAdmins extends javax.swing.JFrame {
 
             },
             new String [] {
-                "First Name", "Last Name", "Gender", "No", "Street", "City", "DOB", "Phone No", "NIC", "Email", "Log ID", "User Type", "Acc No", "Payment ID"
+                "First Name", "Last Name", "Gender", "No", "Street", "City", "DOB", "Phone No", "NIC", "Email", "Log ID", "Acc No", "Payment ID"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -206,13 +206,13 @@ public class ViewAndDeleteAdmins extends javax.swing.JFrame {
             }
         });
 
-        Teacher_Delete_Btn.setBackground(new java.awt.Color(255, 255, 255));
-        Teacher_Delete_Btn.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        Teacher_Delete_Btn.setText("Delete");
-        Teacher_Delete_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Teacher_Delete_Btn.addActionListener(new java.awt.event.ActionListener() {
+        Admin_Delete_Btn.setBackground(new java.awt.Color(255, 255, 255));
+        Admin_Delete_Btn.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        Admin_Delete_Btn.setText("Delete");
+        Admin_Delete_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Admin_Delete_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Teacher_Delete_BtnActionPerformed(evt);
+                Admin_Delete_BtnActionPerformed(evt);
             }
         });
 
@@ -240,7 +240,7 @@ public class ViewAndDeleteAdmins extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Teacher_Delete_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Admin_Delete_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 619, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -256,7 +256,7 @@ public class ViewAndDeleteAdmins extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Teacher_Delete_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(Admin_Delete_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextField10))
                 .addContainerGap(34, Short.MAX_VALUE))
@@ -334,7 +334,7 @@ public class ViewAndDeleteAdmins extends javax.swing.JFrame {
                 
                 if(rs.next()){
                     do {                        
-                        
+                        logid=rs.getString("LogId");
                         fname=rs.getString("FName");
                         lname=rs.getString("LName");
                         gender=rs.getString("Gender");
@@ -345,12 +345,10 @@ public class ViewAndDeleteAdmins extends javax.swing.JFrame {
                         nic=rs.getString("PhoneNo");
                         telno=rs.getString("NIC");
                         email=rs.getString("Email");
-                        logid=rs.getString("LogId");
-                        usertype=rs.getString("UserType");
                         accno=rs.getString("AccNo");
                         payid=rs.getString("PaymentID");
                         
-                        dtm.addRow(new Object[]{fname,lname,gender,bdate,no,street,city,nic,telno,email,logid,usertype,accno,payid});
+                        dtm.addRow(new Object[]{fname,lname,gender,bdate,no,street,city,nic,telno,email,logid,accno,payid});
                     } while (rs.next());
  
                 }
@@ -399,12 +397,12 @@ public class ViewAndDeleteAdmins extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField10KeyReleased
 
-    private void Teacher_Delete_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Teacher_Delete_BtnActionPerformed
+    private void Admin_Delete_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_Delete_BtnActionPerformed
         
         String delteacher=jTextField10.getText();
         
         String sql1="DELETE FROM users WHERE LogId=?";
-        String sql2="DELETE FROM clerk WHERE UID=?";
+        String sql2="DELETE FROM admin WHERE LogAdminId=?";
         //String sql3="DELETE FROM register WHERE NIC=?";
         
         
@@ -430,7 +428,7 @@ public class ViewAndDeleteAdmins extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-    }//GEN-LAST:event_Teacher_Delete_BtnActionPerformed
+    }//GEN-LAST:event_Admin_Delete_BtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -459,12 +457,7 @@ public class ViewAndDeleteAdmins extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -475,7 +468,7 @@ public class ViewAndDeleteAdmins extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Teacher_Delete_Btn;
+    private javax.swing.JButton Admin_Delete_Btn;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
