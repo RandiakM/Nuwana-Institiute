@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 02, 2019 at 05:39 PM
+-- Generation Time: Feb 10, 2019 at 05:21 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -37,14 +37,14 @@ CREATE TABLE IF NOT EXISTS `admin` (
   UNIQUE KEY `UserId` (`UserId`),
   KEY `LogId` (`LogAdminId`),
   KEY `PaymentID` (`PaymentID`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`UserId`, `LogAdminId`, `AccNo`, `PaymentID`) VALUES
-(7, 'ADM-001', '7812345', 'PAY-ADM-001');
+(13, 'ADM-001', '8976767', 'PAY-ADM-001');
 
 -- --------------------------------------------------------
 
@@ -77,19 +77,29 @@ DROP TABLE IF EXISTS `clerk`;
 CREATE TABLE IF NOT EXISTS `clerk` (
   `UserId` int(11) NOT NULL AUTO_INCREMENT,
   `LogClerkId` varchar(50) NOT NULL,
-  `AccNo` varchar(30) DEFAULT NULL,
+  `FName` varchar(30) DEFAULT NULL,
+  `LName` varchar(30) DEFAULT NULL,
+  `Gender` varchar(30) DEFAULT NULL,
+  `No` varchar(30) DEFAULT NULL,
+  `Street` varchar(30) DEFAULT NULL,
+  `City` varchar(30) DEFAULT NULL,
+  `DOB` varchar(30) DEFAULT NULL,
+  `PhoneNo` varchar(30) DEFAULT NULL,
+  `NIC` varchar(30) DEFAULT NULL,
+  `Email` varchar(30) DEFAULT NULL,
   `PaymentID` varchar(30) DEFAULT NULL,
+  `AccNo` varchar(30) DEFAULT NULL,
+  `LogAdminId` varchar(30) DEFAULT NULL,
   UNIQUE KEY `UserId` (`UserId`),
-  KEY `PaymentID` (`PaymentID`),
   KEY `LogId` (`LogClerkId`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `clerk`
 --
 
-INSERT INTO `clerk` (`UserId`, `LogClerkId`, `AccNo`, `PaymentID`) VALUES
-(2, 'CLK-003', '7856765', 'PAY-CLK-003');
+INSERT INTO `clerk` (`UserId`, `LogClerkId`, `FName`, `LName`, `Gender`, `No`, `Street`, `City`, `DOB`, `PhoneNo`, `NIC`, `Email`, `PaymentID`, `AccNo`, `LogAdminId`) VALUES
+(6, 'CLK-001', 'Himal', 'Deshaproya', 'Male', '22', 'Pussella Rd', 'Kegalle', '2019-02-07', '0716806080', '958778987v', 'himal@gmail.com', 'PAY-CLK-001', '8976776', 'ADM-001');
 
 -- --------------------------------------------------------
 
@@ -133,14 +143,14 @@ CREATE TABLE IF NOT EXISTS `fees` (
   `Amount` varchar(50) NOT NULL,
   `PayDate` date DEFAULT NULL,
   UNIQUE KEY `UserId` (`UserId`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `fees`
 --
 
 INSERT INTO `fees` (`UserId`, `StudentId`, `StGrade`, `StSubjects`, `Amount`, `PayDate`) VALUES
-(1, 'STD-11-001', '11', 'Maths', '100.00', '2019-01-01');
+(3, 'STD-10-001', '10', 'maths', '1000.00', '2019-02-05');
 
 -- --------------------------------------------------------
 
@@ -150,7 +160,6 @@ INSERT INTO `fees` (`UserId`, `StudentId`, `StGrade`, `StSubjects`, `Amount`, `P
 
 DROP TABLE IF EXISTS `labour`;
 CREATE TABLE IF NOT EXISTS `labour` (
-  `UserId` int(11) NOT NULL AUTO_INCREMENT,
   `LabourId` varchar(50) NOT NULL,
   `FName` varchar(50) NOT NULL,
   `LName` varchar(50) NOT NULL,
@@ -161,20 +170,20 @@ CREATE TABLE IF NOT EXISTS `labour` (
   `DOB` date NOT NULL,
   `PhoneNo` int(10) NOT NULL,
   `NIC` varchar(15) NOT NULL,
-  `Email` varchar(50) DEFAULT NULL,
   `AccNo` varchar(30) DEFAULT NULL,
   `PaymentID` varchar(30) DEFAULT NULL,
+  `Occupation` varchar(30) DEFAULT NULL,
+  `LogClerkId` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`LabourId`),
-  UNIQUE KEY `UserId` (`UserId`),
   KEY `PaymentID` (`PaymentID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `labour`
 --
 
-INSERT INTO `labour` (`UserId`, `LabourId`, `FName`, `LName`, `Gender`, `No`, `Street`, `City`, `DOB`, `PhoneNo`, `NIC`, `Email`, `AccNo`, `PaymentID`) VALUES
-(1, 'LBR-001', 'Rajith', 'Dsananjaya', 'Male', '44', 'Udaha Rd', 'Kegalle', '2019-01-19', 772222345, '867878980v', 'rajith@gmail.com', '9982323', 'PAY-LBR-001');
+INSERT INTO `labour` (`LabourId`, `FName`, `LName`, `Gender`, `No`, `Street`, `City`, `DOB`, `PhoneNo`, `NIC`, `AccNo`, `PaymentID`, `Occupation`, `LogClerkId`) VALUES
+('LBR-001', 'Anuradha', 'Ranapana', 'Male', '44', 'Bulugahadeniya Rd', 'Kegalle', '2019-02-14', 726786545, '957678765v', '12344', 'PAY-LBR-001', 'Card Marker', 'CLK-001');
 
 -- --------------------------------------------------------
 
@@ -191,16 +200,16 @@ CREATE TABLE IF NOT EXISTS `login` (
   UNIQUE KEY `Password` (`Password`),
   UNIQUE KEY `UserId` (`UserId`),
   KEY `LogId` (`LogId`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `login`
 --
 
 INSERT INTO `login` (`UserId`, `LogId`, `Password`, `Activated`) VALUES
-(1, 'ADM-001', 'randika', '1'),
-(14, 'TEA-001', 'kalitha', '1'),
-(15, 'CLK-003', 'wwwwww', '1');
+(21, 'TEA-001', 'janaka', '1'),
+(20, 'CLK-001', 'cccccc', '1'),
+(18, 'ADM-001', 'randika', '1');
 
 -- --------------------------------------------------------
 
@@ -210,18 +219,19 @@ INSERT INTO `login` (`UserId`, `LogId`, `Password`, `Activated`) VALUES
 
 DROP TABLE IF EXISTS `parent`;
 CREATE TABLE IF NOT EXISTS `parent` (
-  `ParentName` varchar(50) DEFAULT NULL,
-  `ParentTelNo` int(10) DEFAULT NULL,
-  `StudentId` varchar(50) DEFAULT NULL,
-  KEY `StudentId` (`StudentId`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `UserId` int(11) NOT NULL AUTO_INCREMENT,
+  `pname` varchar(30) DEFAULT NULL,
+  `StudentsID` varchar(30) NOT NULL,
+  `ptelNo` varchar(30) DEFAULT NULL,
+  UNIQUE KEY `UserId` (`UserId`)
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `parent`
 --
 
-INSERT INTO `parent` (`ParentName`, `ParentTelNo`, `StudentId`) VALUES
-('cc', 11, 'STD-987');
+INSERT INTO `parent` (`UserId`, `pname`, `StudentsID`, `ptelNo`) VALUES
+(24, 'eeweqwe', 'STD-10-001', '32322');
 
 -- --------------------------------------------------------
 
@@ -240,13 +250,6 @@ CREATE TABLE IF NOT EXISTS `payment` (
   UNIQUE KEY `UserId` (`UserId`),
   KEY `LogId` (`LogpayId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `payment`
---
-
-INSERT INTO `payment` (`UserId`, `LogpayId`, `PaymentID`, `Amount`, `PayDate`) VALUES
-(1, 'ADM-001', 'PAY-ADM-001', '10000.00', '2019-01-08');
 
 -- --------------------------------------------------------
 
@@ -268,19 +271,19 @@ CREATE TABLE IF NOT EXISTS `student` (
   `PhoneNo` int(10) NOT NULL,
   `NIC` varchar(10) DEFAULT NULL,
   `Email` varchar(30) DEFAULT NULL,
-  `LogClerkId` varchar(50) DEFAULT '6',
+  `Grade` varchar(50) DEFAULT NULL,
+  `LogClerkId` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`StudentId`),
   UNIQUE KEY `UserId` (`UserId`),
   UNIQUE KEY `PhoneNo` (`PhoneNo`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`UserId`, `StudentId`, `FName`, `LName`, `Gender`, `No`, `Street`, `City`, `DOB`, `PhoneNo`, `NIC`, `Email`, `LogClerkId`) VALUES
-(1, 'STD-8-001', 'sandaru', 'imal', 'Male', '34', 'badulla', 'haliela', '2019-01-04', 334444, '23322', 'sandaru', '6'),
-(5, 'STD-987', 'qq', 'qqqq', 'Female', '22', 'ss', 'dd', '2019-01-18', 33, '43', 'ddf', 'CLK-003');
+INSERT INTO `student` (`UserId`, `StudentId`, `FName`, `LName`, `Gender`, `No`, `Street`, `City`, `DOB`, `PhoneNo`, `NIC`, `Email`, `Grade`, `LogClerkId`) VALUES
+(6, 'STD-10-001', 'Rusiru', 'Nawagamuwa', 'Male', '56', 'Udaha rd', 'Kefalle', '2019-02-08', 98675434, '9876545', 'rusiru@gmail.com', '10', 'CLK-001');
 
 -- --------------------------------------------------------
 
@@ -295,14 +298,6 @@ CREATE TABLE IF NOT EXISTS `student_attendance` (
   `AtDate` date NOT NULL,
   UNIQUE KEY `UserId` (`UserId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `student_attendance`
---
-
-INSERT INTO `student_attendance` (`UserId`, `StudentId`, `AtDate`) VALUES
-(1, 'STD-8-001', '2019-02-02'),
-(2, 'STD-9-005', '2019-02-02');
 
 -- --------------------------------------------------------
 
@@ -320,14 +315,6 @@ CREATE TABLE IF NOT EXISTS `student_parent` (
   KEY `StudentId` (`StudentId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `student_parent`
---
-
-INSERT INTO `student_parent` (`UserId`, `StudentId`, `ParentName`, `ParentTelNo`) VALUES
-(1, 'STD-8-001', 'father', 711212123),
-(7, 'STD-10-001', 'u', 6);
-
 -- --------------------------------------------------------
 
 --
@@ -338,18 +325,58 @@ DROP TABLE IF EXISTS `student_subject`;
 CREATE TABLE IF NOT EXISTS `student_subject` (
   `UserId` int(11) NOT NULL AUTO_INCREMENT,
   `StudentId` varchar(50) NOT NULL,
-  `StSubjects` varchar(50) NOT NULL,
+  `6_science` varchar(30) DEFAULT NULL,
+  `6_maths` varchar(30) DEFAULT NULL,
+  `6_english` varchar(30) DEFAULT NULL,
+  `7_science` varchar(30) DEFAULT NULL,
+  `7_maths` varchar(30) DEFAULT NULL,
+  `7_english` varchar(30) DEFAULT NULL,
+  `8_science` varchar(30) DEFAULT NULL,
+  `8_maths` varchar(30) DEFAULT NULL,
+  `8_english` varchar(30) DEFAULT NULL,
+  `9_science` varchar(30) DEFAULT NULL,
+  `9_maths` varchar(30) DEFAULT NULL,
+  `9_english` varchar(30) DEFAULT NULL,
+  `10_science` varchar(30) DEFAULT NULL,
+  `10_maths` varchar(30) DEFAULT NULL,
+  `10_english` varchar(30) DEFAULT NULL,
+  `11_science` varchar(30) DEFAULT NULL,
+  `11_maths` varchar(30) DEFAULT NULL,
+  `11_english` varchar(30) DEFAULT NULL,
+  `12_commaths` varchar(30) DEFAULT NULL,
+  `12_biology` varchar(30) DEFAULT NULL,
+  `12_chemistry` varchar(30) DEFAULT NULL,
+  `12_physics` varchar(30) DEFAULT NULL,
+  `12_sinhala` varchar(30) DEFAULT NULL,
+  `12_history` varchar(30) DEFAULT NULL,
+  `12_logic` varchar(30) DEFAULT NULL,
+  `12_accounting` varchar(30) DEFAULT NULL,
+  `12_econ` varchar(30) DEFAULT NULL,
+  `12_commerce` varchar(30) DEFAULT NULL,
+  `13_commaths` varchar(30) DEFAULT NULL,
+  `13_biology` varchar(30) DEFAULT NULL,
+  `13_chemistry` varchar(30) DEFAULT NULL,
+  `13_physics` varchar(30) DEFAULT NULL,
+  `13_sinhala` varchar(30) DEFAULT NULL,
+  `13_history` varchar(30) DEFAULT NULL,
+  `13_logic` varchar(30) DEFAULT NULL,
+  `13_accounting` varchar(30) DEFAULT NULL,
+  `13_econ` varchar(30) DEFAULT NULL,
+  `13_commerce` varchar(30) DEFAULT NULL,
+  `rev_commaths` varchar(30) DEFAULT NULL,
+  `rev_biology` varchar(30) DEFAULT NULL,
+  `rev_chemistry` varchar(30) DEFAULT NULL,
+  `rev_physics` varchar(30) DEFAULT NULL,
   UNIQUE KEY `UserId` (`UserId`),
   KEY `StudentId` (`StudentId`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student_subject`
 --
 
-INSERT INTO `student_subject` (`UserId`, `StudentId`, `StSubjects`) VALUES
-(1, 'STD-8-001', 'Science|'),
-(7, 'STD-10-001', 'Maths|');
+INSERT INTO `student_subject` (`UserId`, `StudentId`, `6_science`, `6_maths`, `6_english`, `7_science`, `7_maths`, `7_english`, `8_science`, `8_maths`, `8_english`, `9_science`, `9_maths`, `9_english`, `10_science`, `10_maths`, `10_english`, `11_science`, `11_maths`, `11_english`, `12_commaths`, `12_biology`, `12_chemistry`, `12_physics`, `12_sinhala`, `12_history`, `12_logic`, `12_accounting`, `12_econ`, `12_commerce`, `13_commaths`, `13_biology`, `13_chemistry`, `13_physics`, `13_sinhala`, `13_history`, `13_logic`, `13_accounting`, `13_econ`, `13_commerce`, `rev_commaths`, `rev_biology`, `rev_chemistry`, `rev_physics`) VALUES
+(13, 'STD-10-001', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', '1', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null');
 
 -- --------------------------------------------------------
 
@@ -385,12 +412,43 @@ CREATE TABLE IF NOT EXISTS `subject` (
   UNIQUE KEY `UserId` (`UserId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `subject`
+-- Table structure for table `subject_teacher`
 --
 
-INSERT INTO `subject` (`UserId`, `LogId`, `SubjectId`, `TeGrade`, `TeSubjects`) VALUES
-(1, 'TEA-001', 'TEA-001-SUB-6-9/M', '10 to 11', 'Maths|');
+DROP TABLE IF EXISTS `subject_teacher`;
+CREATE TABLE IF NOT EXISTS `subject_teacher` (
+  `UserID` int(11) NOT NULL AUTO_INCREMENT,
+  `Maths` varchar(30) DEFAULT NULL,
+  `Science` varchar(30) DEFAULT NULL,
+  `English` varchar(30) DEFAULT NULL,
+  `Combine_Maths` varchar(30) DEFAULT NULL,
+  `Biology` varchar(30) DEFAULT NULL,
+  `Chemistry` varchar(30) DEFAULT NULL,
+  `Physics` varchar(30) DEFAULT NULL,
+  `Sinhala` varchar(30) DEFAULT NULL,
+  `Logic` varchar(30) DEFAULT NULL,
+  `History` varchar(30) DEFAULT NULL,
+  `Accounting` varchar(30) DEFAULT NULL,
+  `Econ` varchar(30) DEFAULT NULL,
+  `Commerce` varchar(30) DEFAULT NULL,
+  `Combine_Maths_rev` varchar(30) DEFAULT NULL,
+  `Biology_rev` varchar(30) DEFAULT NULL,
+  `Chemistry_rev` varchar(30) DEFAULT NULL,
+  `Physics_rev` varchar(30) DEFAULT NULL,
+  `LogTeacherId` varchar(30) DEFAULT NULL,
+  UNIQUE KEY `UserID` (`UserID`),
+  UNIQUE KEY `LogTeacherId` (`LogTeacherId`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subject_teacher`
+--
+
+INSERT INTO `subject_teacher` (`UserID`, `Maths`, `Science`, `English`, `Combine_Maths`, `Biology`, `Chemistry`, `Physics`, `Sinhala`, `Logic`, `History`, `Accounting`, `Econ`, `Commerce`, `Combine_Maths_rev`, `Biology_rev`, `Chemistry_rev`, `Physics_rev`, `LogTeacherId`) VALUES
+(1, '1', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'TEA-001');
 
 -- --------------------------------------------------------
 
@@ -402,21 +460,32 @@ DROP TABLE IF EXISTS `teacher`;
 CREATE TABLE IF NOT EXISTS `teacher` (
   `UserId` int(15) NOT NULL AUTO_INCREMENT,
   `LogTeacherId` varchar(50) NOT NULL,
-  `PaymentID` varchar(50) NOT NULL,
+  `FName` varchar(50) NOT NULL,
+  `LName` varchar(50) NOT NULL,
+  `Gender` varchar(6) NOT NULL,
+  `No` varchar(50) NOT NULL,
+  `Street` varchar(50) NOT NULL,
+  `City` varchar(50) NOT NULL,
+  `DOB` date NOT NULL,
+  `PhoneNo` int(10) NOT NULL,
+  `Grade` varchar(50) NOT NULL,
+  `NIC` varchar(50) NOT NULL,
+  `Email` varchar(50) NOT NULL,
   `AccNo` varchar(30) NOT NULL,
-  `TeGrade` varchar(50) NOT NULL,
-  `TeSubjects` varchar(100) NOT NULL,
+  `PaymentID` varchar(50) NOT NULL,
+  `LogClerkId` varchar(50) NOT NULL,
   UNIQUE KEY `UserId` (`UserId`),
   KEY `LogId` (`LogTeacherId`),
-  KEY `PaymentID` (`PaymentID`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  KEY `PaymentID` (`PaymentID`),
+  KEY `LogClerkId` (`LogClerkId`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `teacher`
 --
 
-INSERT INTO `teacher` (`UserId`, `LogTeacherId`, `PaymentID`, `AccNo`, `TeGrade`, `TeSubjects`) VALUES
-(8, 'TEA-001', 'PAY-TEA-001', '1233456', '10 to 11', 'Maths|');
+INSERT INTO `teacher` (`UserId`, `LogTeacherId`, `FName`, `LName`, `Gender`, `No`, `Street`, `City`, `DOB`, `PhoneNo`, `Grade`, `NIC`, `Email`, `AccNo`, `PaymentID`, `LogClerkId`) VALUES
+(11, 'TEA-001', 'Janaka', 'Nishantha', 'Male', '33', 'Welikada rd', 'Makevita', '2019-02-06', 716787865, '6-11', '7898786544v', 'kamal@gmail.com', '6787876', 'PAY-TEA-001', 'CLK-001');
 
 -- --------------------------------------------------------
 
@@ -462,18 +531,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `NIC` varchar(20) NOT NULL,
   `Email` varchar(50) NOT NULL,
   `LogId` varchar(50) NOT NULL,
-  `UserType` varchar(50) NOT NULL,
   PRIMARY KEY (`LogId`),
   UNIQUE KEY `UserId` (`UserId`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`UserId`, `FName`, `LName`, `Gender`, `No`, `Street`, `City`, `DOB`, `PhoneNo`, `NIC`, `Email`, `LogId`, `UserType`) VALUES
-(1, 'Randika', 'Madhushan', 'Male', '230', 'Udadeniya Rd', 'Kegalle', '1995-11-07', 716885362, '953121514v', 'randikamadu1995@gmail.com', 'ADM-001', 'Admin'),
-(23, 'Kalitha', 'Dissanayake', 'Male', '12', 'Ambepussa Rd', 'Kegalle', '2019-01-10', 719999999, '959090909v', 'kalitha@gmail.com', 'TEA-001', 'Teacher');
+INSERT INTO `users` (`UserId`, `FName`, `LName`, `Gender`, `No`, `Street`, `City`, `DOB`, `PhoneNo`, `NIC`, `Email`, `LogId`) VALUES
+(44, 'Janaka', 'Nishantha', 'Male', '33', 'Welikada rd', 'Makevita', '2019-02-06', 716787865, '7898786544v', 'kamal@gmail.com', 'TEA-001'),
+(43, 'Himal', 'Deshaproya', 'Male', '22', 'Pussella Rd', 'Kegalle', '2019-02-07', 716806080, '958778987v', 'himal@gmail.com', 'CLK-001'),
+(42, 'Randika', 'Madhushan', 'Male', '230', 'Udadeniya Rd', 'Kegalle', '2019-02-07', 763694098, '963121514v', 'randika@gmail.com', 'ADM-001');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
