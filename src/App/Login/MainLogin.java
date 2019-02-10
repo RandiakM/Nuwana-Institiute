@@ -93,7 +93,6 @@ public class MainLogin extends javax.swing.JFrame {
 
         jTextField1.setBackground(java.awt.Color.lightGray);
         jTextField1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(51, 51, 51));
         jTextField1.setToolTipText("");
         jTextField1.setBorder(null);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +110,6 @@ public class MainLogin extends javax.swing.JFrame {
 
         jPasswordField1.setBackground(java.awt.Color.lightGray);
         jPasswordField1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(51, 51, 51));
         jPasswordField1.setBorder(null);
 
         jSeparator5.setBackground(new java.awt.Color(51, 51, 51));
@@ -293,6 +291,7 @@ public class MainLogin extends javax.swing.JFrame {
                     break;
                 case "TEA":
                     new HomeTeacher().setVisible(true);
+                    System.out.println("HomeTeacher Login Succesfully");
                     break;
 
                 default:
@@ -380,12 +379,7 @@ public class MainLogin extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
