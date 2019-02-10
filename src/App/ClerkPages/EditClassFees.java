@@ -7,6 +7,7 @@ package App.ClerkPages;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.text.BadLocationException;
 
 /**
  *
@@ -28,7 +30,7 @@ public final class EditClassFees extends javax.swing.JFrame {
      * Creates new form EditClassFees
      */
     public EditClassFees() {
-        
+
         this.setUndecorated(false);
         this.setAlwaysOnTop(true);
         this.setResizable(true);
@@ -44,7 +46,7 @@ public final class EditClassFees extends javax.swing.JFrame {
         this.setSize(xsize, ysize);
 
     }
-    
+
     class Fees {
 
         private final String SubjectCode;
@@ -108,7 +110,7 @@ public final class EditClassFees extends javax.swing.JFrame {
     }
 
     public void addFees() {
-        String subject = txtMonthlyFee.getText();
+        String subject = txtSubject.getText();
         String grade = comboGrade.getSelectedItem().toString();
         String subjectCode = txtSubjectCode.getText();
         String monthlyFee = txtMonthlyFee.getText();
@@ -130,8 +132,6 @@ public final class EditClassFees extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
     }
-
-    
 
     public ArrayList<Fees> monthlyFee() {
         ArrayList<Fees> List = new ArrayList<>();
@@ -168,8 +168,8 @@ public final class EditClassFees extends javax.swing.JFrame {
         Object[] row = new Object[4];
         for (int i = 0; i < list.size(); i++) {
             row[0] = list.get(i).getSubjectCode();
-            row[1] = list.get(i).getGrade();
-            row[2] = list.get(i).getSubject();
+            row[1] = list.get(i).getSubject();
+            row[2] = list.get(i).getGrade();
             row[3] = list.get(i).getMonthly_Fee();
             model.addRow(row);
         }
@@ -178,23 +178,80 @@ public final class EditClassFees extends javax.swing.JFrame {
 
     public void DeleteFees() {
         try {
+            DefaultTableModel model = (DefaultTableModel) Table.getModel();
+            Object[] row1 = new Object[4];
             Connection con = getConnection();
             Statement st = con.createStatement();
             int row = Table.getSelectedRow();
 
             String cell = Table.getModel().getValueAt(row, 0).toString();
             String query3 = "DELETE FROM monthly_fees WHERE Subject_Code ='" + cell + "'";
-            int n1 = st.executeUpdate(query3);
-            if (n1 != 0) {
-                txtDisplay.setText("Record Deleted Successfully");
 
+            int n3 = st.executeUpdate(query3);
+            if (n3 != 0) {
+                txtDisplay.setText("Records Deleted Successfully");
             } else {
                 txtDisplay.setText("Please Try Again");
-
             }
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
+    }
+
+    public void subjectCode() {
+        try {
+            String grade = comboGrade.getSelectedItem().toString();
+            String subject = txtSubject.getText(0, 2);
+
+            if (comboGrade.getSelectedItem() == "REVISION") {
+                String subjectCode1 = "Re" + "-" + subject;
+                txtSubjectCode.setText(subjectCode1);
+            } else {
+                String subjectCode = grade + "" + subject;
+
+                txtSubjectCode.setText(subjectCode);
+            }
+
+        } catch (HeadlessException | BadLocationException e) {
+            e.getMessage();
+        }
+    }
+
+    public void display() {
+        DefaultTableModel model = (DefaultTableModel) Table.getModel();
+        Object[] row = new Object[4];
+
+        row[0] = txtSubjectCode.getText();
+        row[1] = txtSubject.getText();
+        row[2] = comboGrade.getSelectedItem().toString();
+        row[3] = txtMonthlyFee.getText();
+        model.addRow(row);
+
+        Table.setModel(model);
+
+    }
+
+    public void Show() {
+        try {
+            DefaultTableModel model = (DefaultTableModel) Table.getModel();
+            Object[] row = new Object[4];
+            Connection con = getConnection();
+            Statement stmt = con.createStatement();
+            String query4 = "SELECT * FROM monthly_fees";
+            ResultSet rs3 = stmt.executeQuery(query4);
+            while (rs3.next()) {
+                row[0] = rs3.getString("Subject_Code");
+                row[1] = rs3.getString("Subject");
+                row[2] = rs3.getString("Grade");
+                row[3] = rs3.getString("Monthly_Fee");
+                model.addRow(row);
+
+                Table.setModel(model);
+            }
+
+        } catch (SQLException e) {
+            e.getMessage();
         }
     }
 
@@ -203,6 +260,9 @@ public final class EditClassFees extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -220,13 +280,22 @@ public final class EditClassFees extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Table = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 51));
+
+        jLabel1.setBackground(new java.awt.Color(97, 212, 195));
+        jLabel1.setFont(new java.awt.Font("Engravers MT", 1, 24)); // NOI18N
+        jLabel1.setText("NUWANA");
+
+        jLabel2.setBackground(new java.awt.Color(97, 212, 195));
+        jLabel2.setFont(new java.awt.Font("Engravers MT", 1, 24)); // NOI18N
+        jLabel2.setText("INSTITUTE");
+
+        jLabel4.setBackground(new java.awt.Color(97, 212, 195));
+        jLabel4.setFont(new java.awt.Font("Edwardian Script ITC", 0, 24)); // NOI18N
+        jLabel4.setText("\"Beyond the Norm\"");
 
         jPanel2.setBackground(new java.awt.Color(153, 255, 153));
 
@@ -246,12 +315,18 @@ public final class EditClassFees extends javax.swing.JFrame {
 
         comboGrade.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         comboGrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "6", "7", "8", "9", "10", "11", "12", "13", "REVISION" }));
+        comboGrade.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                comboGradeMouseReleased(evt);
+            }
+        });
         comboGrade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboGradeActionPerformed(evt);
             }
         });
 
+        txtSubjectCode.setEditable(false);
         txtSubjectCode.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         txtSubjectCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -365,7 +440,7 @@ public final class EditClassFees extends javax.swing.JFrame {
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 308, Short.MAX_VALUE)
                 .addComponent(txtDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
@@ -401,75 +476,64 @@ public final class EditClassFees extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 797, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(404, 404, 404)
+                        .addGap(421, 421, 421)
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
-
-        jLabel1.setBackground(new java.awt.Color(97, 212, 195));
-        jLabel1.setFont(new java.awt.Font("Engravers MT", 1, 24)); // NOI18N
-        jLabel1.setText("NUWANA");
-
-        jLabel2.setBackground(new java.awt.Color(97, 212, 195));
-        jLabel2.setFont(new java.awt.Font("Engravers MT", 1, 24)); // NOI18N
-        jLabel2.setText("INSTITUTE");
-
-        jLabel4.setBackground(new java.awt.Color(97, 212, 195));
-        jLabel4.setFont(new java.awt.Font("Edwardian Script ITC", 0, 24)); // NOI18N
-        jLabel4.setText("\"Beyond the Norm\"");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 399, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(514, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 259, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 161, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,7 +544,7 @@ public final class EditClassFees extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGradeActionPerformed
-
+        subjectCode();
     }//GEN-LAST:event_comboGradeActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -493,23 +557,8 @@ public final class EditClassFees extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         addFees();
-        /*String subject = txtMonthlyFee.getText();
-        String grade = comboGrade.getSelectedItem().toString();
-        String subjectCode = txtSubjectCode.getText();
-        String monthlyFee = txtMonthlyFee.getText();
+        display();
 
-        ArrayList<Fees> list = monthlyFee();
-        DefaultTableModel model = (DefaultTableModel) Table.getModel();
-        Object[] row = new Object[4];
-        for (Fees list1 : list) {
-            row[0] = txtSubjectCode.getText();
-            row[1] = grade;
-            row[2] = subject;
-            row[3] = monthlyFee;
-            model.addRow(row);
-        }
-        Table.setModel(model);
-         */
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -523,9 +572,13 @@ public final class EditClassFees extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         DeleteFees();
-        ShowFees();
+        Show();
 
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void comboGradeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboGradeMouseReleased
+
+    }//GEN-LAST:event_comboGradeMouseReleased
 
     /**
      * @param args the command line arguments

@@ -114,7 +114,7 @@ public final class Time2 extends javax.swing.JFrame {
                 usersList.add(user);
             }
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
         return usersList;
@@ -164,7 +164,6 @@ public final class Time2 extends javax.swing.JFrame {
             if (n1 != 0) {
                 rs = st.getGeneratedKeys();
                 lblDisplay.setText("Class Added Successfully");
-                
 
             } else {
                 lblDisplay.setText("Please Try Again");
@@ -911,21 +910,35 @@ public final class Time2 extends javax.swing.JFrame {
     }//GEN-LAST:event_comboHallActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        try {
-            Connection con = getConnection();
-            
-            int row = Table1.getSelectedRow();
-            String cell = Table1.getModel().getValueAt(row,4).toString();
-            String query4 = "DELETE FROM timetable WHERE HallName = "+cell;
-            pst = con.prepareStatement(query4);
-            pst.execute();
-            JOptionPane.showMessageDialog(rootPane,"Success");
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane,e.getMessage());
-        }
        
-         
+        try {
+            String Scode = txtSubjectCode.getText();
+            String Day = comboDay.getSelectedItem().toString();
+            String hallName = comboHall.getSelectedItem().toString();
+            String time1 = timeChooser1.getFormatedTime();
+            String time2 = timeChooser2.getFormatedTime();
+
+            Connection con = getConnection();
+            st = con.createStatement();
+            String query5 = "DELETE FROM timetable WHERE HallName='" + hallName + "' && ClassDay='" + Day + "' && SubjectCode='"+Scode+"' && StartTime='"+time1+"' && EndTime='"+time2+"'";
+            int n5 = st.executeUpdate(query5);
+
+            if (n5 != 0) {
+
+                lblDisplay.setText("Class Deleted Successfully");
+
+            } else {
+                lblDisplay.setText("Please Try Again");
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
+        findusers();
+
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void comboDay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDay1ActionPerformed
@@ -966,7 +979,32 @@ public final class Time2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+         try {
+            
+            String hall = comboHall1.getSelectedItem().toString();
+            String Id = txtTecherId.getText();
+            String scode = txtSubjectCode1.getText();
+            String Day = comboDay1.getSelectedItem().toString();
+            String startTime = timeChooser4.getFormatedTime();
+            String endTime = timeChooser3.getFormatedTime();
+
+            Connection con = getConnection();
+            st = con.createStatement();
+            String query4 = "DELETE FROM extra_classes WHERE TeacherId='"+Id+"' && HallName='" + hall + "' && ClassDay='" + Day + "' && SubjectCode='"+scode+"' && StartTime='"+startTime+"' && EndTime='"+endTime+"'";
+
+            int n1 = st.executeUpdate(query4);
+            if (n1 != 0) {
+                lblDisplay1.setText("Extra Class Added Successfully");
+            } else {
+                lblDisplay1.setText("Please Try Again");
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
+        findClasses();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void Table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table1MouseClicked
