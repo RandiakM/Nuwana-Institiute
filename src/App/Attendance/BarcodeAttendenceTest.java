@@ -38,56 +38,56 @@ public class BarcodeAttendenceTest extends javax.swing.JFrame {
         conn=DAC.ConnectDb();
     }
     
-     public void listed()
-    {
-        DefaultTableModel table = new DefaultTableModel();
-        
-        table.addColumn("Student ID");
-        table.addColumn("Student Grade");
-        table.addColumn("Student Subjects");
-        table.addColumn("Amount");
-        table.addColumn("Last Pay Date");
-//        table.addColumn("Street");
-//        table.addColumn("DOB");
-//        table.addColumn("Phone NO");
-//        table.addColumn("NIC");
-//        table.addColumn("Email");
-//        table.addColumn("St. Grade");
-        
-        try
-        {
-            Connection con = DAC.ConnectDb();
-            
-            String sql = "SELECT * FROM fees";
-            //pst=conn.prepareStatement(sql);
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            //ResultSet rs=pst.executeQuery();
-            
-            while(rs.next())
-            {
-                table.addRow(new Object[]{
-                    //rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(3),
-                    rs.getString(4),
-                    rs.getString(5),
-                    rs.getString(6),
-//                    rs.getString(7),
-//                    rs.getString(8),
-//                    rs.getString(9),
-//                    rs.getString(10),
-//                    rs.getString(11),
-                    //rs.getString(12),
-                        
-                });
-            }
-            jTable1.setModel(table);
-        }
-        catch(Exception e){
-    
-}
-    }
+//     public void listed()
+//    {
+//        DefaultTableModel table = new DefaultTableModel();
+//        
+//        table.addColumn("Student ID");
+//        table.addColumn("Student Grade");
+//        table.addColumn("Student Subjects");
+//        table.addColumn("Amount");
+//        table.addColumn("Last Pay Date");
+////        table.addColumn("Street");
+////        table.addColumn("DOB");
+////        table.addColumn("Phone NO");
+////        table.addColumn("NIC");
+////        table.addColumn("Email");
+////        table.addColumn("St. Grade");
+//        
+//        try
+//        {
+//            Connection con = DAC.ConnectDb();
+//            
+//            String sql = "SELECT * FROM fees";
+//            //pst=conn.prepareStatement(sql);
+//            Statement st = con.createStatement();
+//            ResultSet rs = st.executeQuery(sql);
+//            //ResultSet rs=pst.executeQuery();
+//            
+//            while(rs.next())
+//            {
+//                table.addRow(new Object[]{
+//                    //rs.getString(1),
+//                    rs.getString(2),
+//                    rs.getString(3),
+//                    rs.getString(4),
+//                    rs.getString(5),
+//                    rs.getString(6),
+////                    rs.getString(7),
+////                    rs.getString(8),
+////                    rs.getString(9),
+////                    rs.getString(10),
+////                    rs.getString(11),
+//                    //rs.getString(12),
+//                        
+//                });
+//            }
+//            //jTable1.setModel(table);
+//        }
+//        catch(Exception e){
+//    
+//}
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -109,8 +109,15 @@ public class BarcodeAttendenceTest extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jLabel17 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -199,102 +206,134 @@ public class BarcodeAttendenceTest extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jLabel17.setText("Subject Attendent ");
+
+        jComboBox1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "6_science", "6_maths", "6_english", "7_science", "7_maths", "7_english", "8_science", "8_maths", "8_english", "9_science", "9_maths", "9_english", "10_science", "10_maths", "10_english", "11_science", "11_maths", "11_english" }));
+
+        jLabel18.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jLabel18.setText("Attendance Date");
+
+        jTextField10.setEditable(false);
+        jTextField10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField10KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField10KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField10KeyTyped(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jLabel19.setText("Last Pay Date");
+
+        jTextField11.setEditable(false);
+        jTextField11.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jTextField11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField11KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField11KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField11KeyTyped(evt);
+            }
+        });
+
+        jScrollPane1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Student ID", "Student Grade", "Student Subjects", "Amount", "Last Pay Date"
+                "Student ID", "Sub. Attend", "Attendance Date", "Last Pay Date"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setHeaderValue("Student ID");
-            jTable1.getColumnModel().getColumn(1).setHeaderValue("Student Grade");
-            jTable1.getColumnModel().getColumn(2).setHeaderValue("Student Subjects");
-            jTable1.getColumnModel().getColumn(3).setHeaderValue("Amount");
-            jTable1.getColumnModel().getColumn(4).setHeaderValue("Last Pay Date");
-        }
+        jScrollPane1.setViewportView(jTable1);
+
+        jButton1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jButton1.setText("Submit");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(299, 299, 299)
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField10)
+                                .addComponent(jComboBox1, 0, 0, Short.MAX_VALUE)))
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextField11)))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(jTextField9))
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField9)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField10)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jTextField11)
+                                .addGap(2, 2, 2)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -324,7 +363,7 @@ public class BarcodeAttendenceTest extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 44, Short.MAX_VALUE))
+                .addGap(0, 50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -335,9 +374,7 @@ public class BarcodeAttendenceTest extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -347,54 +384,54 @@ public class BarcodeAttendenceTest extends javax.swing.JFrame {
 
         //KeyRelased
         
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER)
-        {
-        DefaultTableModel table = new DefaultTableModel();
-        
-        table.addColumn("Student ID");
-        table.addColumn("Student Grade");
-        table.addColumn("Student Subjects");
-        table.addColumn("Amount");
-        table.addColumn("Last Pay Date");
-        
-        try
-        {
-            
-            String sql1 = "SELECT * FROM fees WHERE StudentId='"+jTextField9.getText()+"'";
-            Statement st = DAC.ConnectDb().createStatement();
-            ResultSet rs = st.executeQuery(sql1);
-            
-            while(rs.next())
-            {
-                table.addRow(new Object[]{
-                    //rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(3),
-                    rs.getString(4),
-                    rs.getString(5),
-                    rs.getString(6),
-//                    rs.getString(7),
-//                    rs.getString(8),
-//                    rs.getString(9),
-//                    rs.getString(10),
-//                    rs.getString(11),
-                    
-                        
-                });
-            }
-            jTable1.setModel(table);
-        }
-        catch(Exception e){
-    
-}
-        }
+//         if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+//        {
+//        DefaultTableModel table = new DefaultTableModel();
+//        
+//        table.addColumn("Student ID");
+//        table.addColumn("Student Grade");
+//        table.addColumn("Student Subjects");
+//        table.addColumn("Amount");
+//        table.addColumn("Last Pay Date");
+//        
+//        try
+//        {
+//            
+//            String sql1 = "SELECT * FROM fees WHERE StudentId='"+jTextField9.getText()+"'";
+//            Statement st = DAC.ConnectDb().createStatement();
+//            ResultSet rs = st.executeQuery(sql1);
+//            
+//            while(rs.next())
+//            {
+//                table.addRow(new Object[]{
+//                    //rs.getString(1),
+//                    rs.getString(2),
+//                    rs.getString(3),
+//                    rs.getString(4),
+//                    rs.getString(5),
+//                    rs.getString(6),
+////                    rs.getString(7),
+////                    rs.getString(8),
+////                    rs.getString(9),
+////                    rs.getString(10),
+////                    rs.getString(11),
+//                    
+//                        
+//                });
+//            }
+//            //jTable1.setModel(table);
+//        }
+//        catch(Exception e){
+//    
+//}
+//        }
 
     }//GEN-LAST:event_jTextField9KeyReleased
 
     private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
-        if("".equals(jTextField9.getText())){
-            listed();
-        }
+//        if("".equals(jTextField9.getText())){
+//            listed();
+//        }
     }//GEN-LAST:event_jTextField9KeyTyped
 
     private void jTextField9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyPressed
@@ -447,6 +484,30 @@ public class BarcodeAttendenceTest extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_jTextField9KeyPressed
 
+    private void jTextField10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField10KeyPressed
+
+    private void jTextField10KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField10KeyReleased
+
+    private void jTextField10KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField10KeyTyped
+
+    private void jTextField11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField11KeyPressed
+
+    private void jTextField11KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField11KeyReleased
+
+    private void jTextField11KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField11KeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -484,18 +545,25 @@ public class BarcodeAttendenceTest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

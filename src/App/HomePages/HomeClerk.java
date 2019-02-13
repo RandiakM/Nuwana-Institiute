@@ -7,7 +7,7 @@ package App.HomePages;
 
 //import App.Home.*;
 //import App.Admin.AddAdmin;
-//import App.Clerk.AddClerk;
+import App.ClerkPages.*;
 //import App.Login.MainLogin;
 //import App.Teacher.AddTeacher;
 //import App.Teacher.ViewTeacher;
@@ -16,7 +16,7 @@ import App.AdminPages.RegisterNewLabour;
 import App.AdminPages.RegisterNewStudent;
 import App.AdminPages.RegisterNewTeacher;
 import App.AdminPages.RgisterNewClerk;
-import App.ClerkPages.ClerkProfile;
+//import App.ClerkPages.ClerkProfileOld;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 

@@ -20,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import java.sql.Date;
 
 /**
  *
@@ -35,7 +36,10 @@ public class ClerkProfile extends javax.swing.JFrame {
     
     ResultSet rs2=null;
     PreparedStatement pst2 =null;
-    
+    PreparedStatement pst3 =null;
+    ResultSet rs3=null;
+    PreparedStatement pst4 =null;
+    ResultSet rs4=null;
     String EnPass;
     
     public ClerkProfile() {
@@ -71,8 +75,8 @@ public class ClerkProfile extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        Clerk_Register_Btn = new javax.swing.JButton();
-        Clear_btn = new javax.swing.JButton();
+        Admin_Update_Btn = new javax.swing.JButton();
+        Admin_Clear_btn = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -99,45 +103,47 @@ public class ClerkProfile extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         newPassword = new javax.swing.JPasswordField();
         jLabel22 = new javax.swing.JLabel();
         UserID = new javax.swing.JTextField();
-        ClearBtn = new javax.swing.JButton();
+        Admin_Register_Btn2 = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
         rePassword = new javax.swing.JPasswordField();
-        Clerk_change_password = new javax.swing.JButton();
+        Admin_change_password = new javax.swing.JButton();
         msgLabel = new javax.swing.JLabel();
         msgLabel1 = new javax.swing.JLabel();
+        Admin_Register_Btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(189, 183, 107));
 
-        jPanel2.setBackground(java.awt.Color.darkGray);
+        jPanel2.setBackground(java.awt.Color.lightGray);
 
         jLabel1.setBackground(new java.awt.Color(97, 212, 195));
         jLabel1.setFont(new java.awt.Font("Engravers MT", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("NUWANA");
 
         jLabel2.setBackground(new java.awt.Color(97, 212, 195));
         jLabel2.setFont(new java.awt.Font("Engravers MT", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("INSTITUTE");
 
         jLabel4.setBackground(new java.awt.Color(97, 212, 195));
         jLabel4.setFont(new java.awt.Font("Edwardian Script ITC", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("\"Beyond the Norm\"");
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
+        jSeparator1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         jSeparator3.setBackground(new java.awt.Color(36, 47, 65));
         jSeparator3.setForeground(new java.awt.Color(36, 47, 65));
-        jSeparator3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        jSeparator3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -178,88 +184,94 @@ public class ClerkProfile extends javax.swing.JFrame {
         );
 
         jLabel3.setFont(new java.awt.Font("Good Times Rg", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(36, 47, 65));
         jLabel3.setText("My Profile - Clerk");
 
-        Clerk_Register_Btn.setBackground(new java.awt.Color(255, 255, 255));
-        Clerk_Register_Btn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        Clerk_Register_Btn.setText("Register");
-        Clerk_Register_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Clerk_Register_Btn.addActionListener(new java.awt.event.ActionListener() {
+        Admin_Update_Btn.setBackground(new java.awt.Color(255, 255, 255));
+        Admin_Update_Btn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        Admin_Update_Btn.setText("Update");
+        Admin_Update_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Admin_Update_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Clerk_Register_BtnActionPerformed(evt);
+                Admin_Update_BtnActionPerformed(evt);
             }
         });
 
-        Clear_btn.setBackground(new java.awt.Color(255, 255, 255));
-        Clear_btn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        Clear_btn.setText("Clear");
-        Clear_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Clear_btn.addActionListener(new java.awt.event.ActionListener() {
+        Admin_Clear_btn.setBackground(new java.awt.Color(255, 255, 255));
+        Admin_Clear_btn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        Admin_Clear_btn.setText("Clear");
+        Admin_Clear_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Admin_Clear_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Clear_btnActionPerformed(evt);
+                Admin_Clear_btnActionPerformed(evt);
             }
         });
 
-        jPanel3.setBackground(java.awt.Color.darkGray);
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Basic Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel3.setBackground(java.awt.Color.lightGray);
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Basic Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18))); // NOI18N
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Last Name");
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("First Name");
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Gender");
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("No");
 
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel9.setText("Street");
 
-        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel10.setText("City");
 
         jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Date of Birth");
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Tel No");
 
-        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel13.setText("NIC");
 
-        jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel14.setText("Email");
 
-        jRadioButton1.setBackground(java.awt.Color.darkGray);
+        jTextField1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jTextField8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jRadioButton1.setBackground(java.awt.Color.lightGray);
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton1.setText("Male");
 
-        jRadioButton2.setBackground(java.awt.Color.darkGray);
+        jRadioButton2.setBackground(java.awt.Color.lightGray);
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton2.setText("Female");
 
+        jDateChooser1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
         jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("My ID");
+
+        jTextField9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
@@ -269,6 +281,17 @@ public class ClerkProfile extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
+
+        jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jLabel17.setText("Acc No");
+
+        jTextField10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+
+        jLabel19.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jLabel19.setText("Payment ID");
+
+        jTextField11.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jTextField11.setText("PAY-CLK-");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -318,39 +341,48 @@ public class ClerkProfile extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                             .addComponent(jTextField7)
-                            .addComponent(jTextField8)))
+                            .addComponent(jTextField8))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(jTextField10))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(82, 82, 82))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jRadioButton2)))
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel6)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                            .addComponent(jTextField2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jRadioButton2))
                         .addGap(18, 18, Short.MAX_VALUE)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -372,54 +404,57 @@ public class ClerkProfile extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Basic Details", jPanel3);
 
-        jPanel4.setBackground(java.awt.Color.darkGray);
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Change Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel4.setBackground(java.awt.Color.lightGray);
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Change Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 18))); // NOI18N
         jPanel4.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel21.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("New Password");
 
         jLabel22.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("User ID");
 
-        ClearBtn.setBackground(new java.awt.Color(255, 255, 255));
-        ClearBtn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        ClearBtn.setText("Clear");
-        ClearBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ClearBtn.addActionListener(new java.awt.event.ActionListener() {
+        Admin_Register_Btn2.setBackground(new java.awt.Color(255, 255, 255));
+        Admin_Register_Btn2.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        Admin_Register_Btn2.setText("Clear");
+        Admin_Register_Btn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Admin_Register_Btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClearBtnActionPerformed(evt);
+                Admin_Register_Btn2ActionPerformed(evt);
             }
         });
 
         jLabel23.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Confirm Password");
 
-        Clerk_change_password.setBackground(new java.awt.Color(255, 255, 255));
-        Clerk_change_password.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        Clerk_change_password.setText("Change Password");
-        Clerk_change_password.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Clerk_change_password.addMouseListener(new java.awt.event.MouseAdapter() {
+        Admin_change_password.setBackground(new java.awt.Color(255, 255, 255));
+        Admin_change_password.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        Admin_change_password.setText("Change Password");
+        Admin_change_password.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Admin_change_password.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Clerk_change_passwordMouseClicked(evt);
+                Admin_change_passwordMouseClicked(evt);
             }
         });
-        Clerk_change_password.addActionListener(new java.awt.event.ActionListener() {
+        Admin_change_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Clerk_change_passwordActionPerformed(evt);
+                Admin_change_passwordActionPerformed(evt);
             }
         });
 
@@ -432,9 +467,9 @@ public class ClerkProfile extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(0, 190, Short.MAX_VALUE)
-                        .addComponent(Clerk_change_password)
+                        .addComponent(Admin_change_password)
                         .addGap(18, 18, 18)
-                        .addComponent(ClearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Admin_Register_Btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -464,8 +499,8 @@ public class ClerkProfile extends javax.swing.JFrame {
                     .addComponent(rePassword))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Clerk_change_password, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ClearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Admin_change_password, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Admin_Register_Btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(215, 215, 215))
         );
 
@@ -473,6 +508,16 @@ public class ClerkProfile extends javax.swing.JFrame {
 
         msgLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         msgLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        Admin_Register_Btn.setBackground(new java.awt.Color(255, 255, 255));
+        Admin_Register_Btn.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        Admin_Register_Btn.setText("Register");
+        Admin_Register_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Admin_Register_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Admin_Register_BtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -484,11 +529,13 @@ public class ClerkProfile extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(msgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(msgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Clerk_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Admin_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Admin_Update_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(Admin_Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(5, 5, 5))
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 781, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -509,8 +556,9 @@ public class ClerkProfile extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(msgLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Clerk_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Admin_Update_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Admin_Clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Admin_Register_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(msgLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
@@ -532,7 +580,54 @@ public class ClerkProfile extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Clerk_Register_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clerk_Register_BtnActionPerformed
+    private void Admin_Update_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_Update_BtnActionPerformed
+       
+        //basic details
+        String userid=jTextField9.getText();
+        String fname=jTextField1.getText();
+        String lname=jTextField2.getText();
+        String gender=jRadioButton1.isSelected()?"Male":"Female";
+        String no=jTextField3.getText();
+        String street=jTextField4.getText();
+        String city=jTextField5.getText();
+        //date format
+        SimpleDateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd");
+        String bdate=dateformat.format(jDateChooser1.getDate());
+               
+        String telno=jTextField6.getText();
+        String nic=jTextField7.getText();
+        String email=jTextField8.getText();
+        String accno=jTextField10.getText();
+        String payid=jTextField11.getText();
+        
+        String sql="UPDATE admin SET AccNo=?, PaymentID=? WHERE LogAdminId=?";
+        String sql5="UPDATE users SET FName=?, LName=?, No=?, Street=?, City=?, DOB=?, PhoneNo=?, NIC=?, Email=?"
+                + " WHERE LogId=?";
+        
+        try {
+            pst=conn.prepareStatement(sql);
+            pst.setString(1, accno);
+            pst.setString(2, payid);
+            pst.setString(3, userid);
+            pst.executeUpdate();
+            
+            pst3=conn.prepareStatement(sql5);
+            pst3.setString(1, fname);
+            pst3.setString(2, lname);
+            pst3.setString(3, no);
+            pst3.setString(4, street);
+            pst3.setString(5, city);
+            pst3.setString(6, bdate);
+            pst3.setString(7, telno);
+            pst3.setString(8, nic);
+            pst3.setString(9, email);
+            pst3.setString(10, userid);
+            pst3.executeUpdate();
+            
+            JOptionPane.showMessageDialog(rootPane, "Succesfully Updated Details.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
         /*
         //basic details
         String fname=jTextField1.getText();
@@ -653,9 +748,9 @@ public class ClerkProfile extends javax.swing.JFrame {
         
         */
            
-    }//GEN-LAST:event_Clerk_Register_BtnActionPerformed
+    }//GEN-LAST:event_Admin_Update_BtnActionPerformed
 
-    private void Clear_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clear_btnActionPerformed
+    private void Admin_Clear_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_Clear_btnActionPerformed
         
         jTextField1.setText(null);
         jTextField2.setText(null);
@@ -674,17 +769,17 @@ public class ClerkProfile extends javax.swing.JFrame {
         //newUserName.setText(null);
         newPassword.setText(null);
         rePassword.setText(null);
-    }//GEN-LAST:event_Clear_btnActionPerformed
+    }//GEN-LAST:event_Admin_Clear_btnActionPerformed
 
-    private void ClearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearBtnActionPerformed
+    private void Admin_Register_Btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_Register_Btn2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ClearBtnActionPerformed
+    }//GEN-LAST:event_Admin_Register_Btn2ActionPerformed
 
-    private void Clerk_change_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Clerk_change_passwordActionPerformed
+    private void Admin_change_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_change_passwordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Clerk_change_passwordActionPerformed
+    }//GEN-LAST:event_Admin_change_passwordActionPerformed
 
-    private void Clerk_change_passwordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Clerk_change_passwordMouseClicked
+    private void Admin_change_passwordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Admin_change_passwordMouseClicked
         
         //Change Password
         String uid=UserID.getText();
@@ -714,8 +809,8 @@ public class ClerkProfile extends javax.swing.JFrame {
         
        msgLabel.setText("Successfully Updated your Password.");
          
-       Clerk_Register_Btn.setVisible(false);
-       Clerk_change_password.setVisible(false);
+       Admin_Update_Btn.setVisible(false);
+       Admin_change_password.setVisible(false);
         }
         catch(Exception e){
         JOptionPane.showMessageDialog(null,e.getMessage());
@@ -744,33 +839,109 @@ public class ClerkProfile extends javax.swing.JFrame {
          else{
              msgLabel.setText("Enter a Strong password");
          }
-    }//GEN-LAST:event_Clerk_change_passwordMouseClicked
+    }//GEN-LAST:event_Admin_change_passwordMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         
         String userid=jTextField9.getText();
         String sql3="select * from users where LogId='"+jTextField9.getText()+"'";
+        String sql4="select * from admin where LogAdminId='"+jTextField9.getText()+"'";
+//        String sql3="SELECT a.*, b.AccNo, b.PaymentID FROM" +
+//                            " users a" +
+//                            " INNER JOIN" +
+//                            " admin b" +
+//                            " ON a.LogId=b.LogAdminId" +
+//                            " WHERE LogId='"+jTextField9.getText()+"'";
         try {
             pst1=conn.prepareStatement(sql3);
             rs1=pst1.executeQuery();
+            pst2=conn.prepareStatement(sql4);
+            rs2=pst2.executeQuery();
             //ResultSet rs = stmt.executeQuery(query);
             rs1.next();
+            rs2.next();
             jTextField1.setText(rs1.getString("FName"));
             jTextField2.setText(rs1.getString("LName"));
+            String GN = rs1.getString("Gender");
+              if (GN.equals("FeMale")){
+                jRadioButton1.setSelected(false);
+                jRadioButton2.setSelected(true);}
+              else{
+                jRadioButton2.setSelected(false);
+                jRadioButton1.setSelected(true);
+               }
             jTextField3.setText(rs1.getString("No"));
             jTextField4.setText(rs1.getString("Street"));
             jTextField5.setText(rs1.getString("City"));
-            //jDateChooser1.setCalendar(rs1.getDate("DOB"));
+            jDateChooser1.setDate(rs1.getDate("DOB"));
             jTextField6.setText(rs1.getString("PhoneNo"));
             jTextField7.setText(rs1.getString("NIC"));
             jTextField8.setText(rs1.getString("Email"));
+            jTextField10.setText(rs2.getString("AccNo"));
+            jTextField11.setText(rs2.getString("PaymentID"));
             rs1.close();
             pst1.close();
+            rs2.close();
+            pst2.close();
             //con.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+            JOptionPane.showMessageDialog(rootPane, e);
         }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void Admin_Register_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_Register_BtnActionPerformed
+        
+        //basic details
+        String userid=jTextField9.getText();
+        String fname=jTextField1.getText();
+        String lname=jTextField2.getText();
+        String gender=jRadioButton1.isSelected()?"Male":"Female";
+        String no=jTextField3.getText();
+        String street=jTextField4.getText();
+        String city=jTextField5.getText();
+        //date format
+        SimpleDateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd");
+        String bdate=dateformat.format(jDateChooser1.getDate());
+               
+        String telno=jTextField6.getText();
+        String nic=jTextField7.getText();
+        String email=jTextField8.getText();
+        String accno=jTextField10.getText();
+        String payid=jTextField11.getText();
+        
+        String sql="INSERT INTO users(Fname,LName,Gender,No,Street,City,DOB,PhoneNo,NIC,Email,LogId)"
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        String sql5="INSERT INTO admin(LogAdminId,AccNo,PaymentID)"
+                + "VALUES(?,?,?)";
+                
+        
+        try {
+            pst4=conn.prepareStatement(sql5);
+            pst4.setString(1, userid);
+            pst4.setString(2, accno);
+            pst4.setString(3, payid);
+            pst4.executeUpdate();
+            
+            pst4=conn.prepareStatement(sql);
+            pst4.setString(1, fname);
+            pst4.setString(2, lname);
+            pst4.setString(3, gender);
+            pst4.setString(4, no);
+            pst4.setString(5, street);
+            pst4.setString(6, city);
+            pst4.setString(7, bdate);
+            pst4.setString(8, telno);
+            pst4.setString(9, nic);
+            pst4.setString(10, email);
+            pst4.setString(11, "ADM-001");
+            //pst4.setString(12, "Admin");
+            pst4.executeUpdate();
+            
+            JOptionPane.showMessageDialog(rootPane, "Succesfully Added Details.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_Admin_Register_BtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -823,10 +994,11 @@ public class ClerkProfile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ClearBtn;
-    private javax.swing.JButton Clear_btn;
-    private javax.swing.JButton Clerk_Register_Btn;
-    private javax.swing.JButton Clerk_change_password;
+    private javax.swing.JButton Admin_Clear_btn;
+    private javax.swing.JButton Admin_Register_Btn;
+    private javax.swing.JButton Admin_Register_Btn2;
+    private javax.swing.JButton Admin_Update_Btn;
+    private javax.swing.JButton Admin_change_password;
     private javax.swing.JTextField UserID;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
@@ -838,6 +1010,8 @@ public class ClerkProfile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -859,6 +1033,8 @@ public class ClerkProfile extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;

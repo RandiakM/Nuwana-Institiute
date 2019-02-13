@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tutionclassmanagement;
+package App.Payment;
 
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -495,7 +495,7 @@ public class Payment extends javax.swing.JFrame {
             //Load the driver
             Class.forName("com.mysql.jdbc.Driver");
             //Create the connection
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/nuwanadb","root","");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/nuwana","root","");
             //Create statement
             Statement stmt = con.createStatement();
             //SQL query
@@ -538,11 +538,12 @@ public class Payment extends javax.swing.JFrame {
             //Load the driver
             Class.forName("com.mysql.jdbc.Driver");
             //Create a connection
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/nuwanadb", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/nuwana", "root", "");
             //Create statement
             Statement stmt = con.createStatement();
             //SQL query
-            String query = "insert into teacher_pay (teacherID,tname,teach_income,inst_incom,email) values ('"+id+"','"+name+"','"+t_incme+"','"+incme+"','"+email+"')";
+            String query = "insert into teacher_pay (teacherID,tname,teach_income,inst_incom,email)"
+                    + " values ('"+id+"','"+name+"','"+t_incme+"','"+incme+"','"+email+"')";
             //Execute the query
             int n = stmt.executeUpdate(query);
             if (n!=0) {
@@ -589,7 +590,7 @@ public class Payment extends javax.swing.JFrame {
         props.put("mail.smtp.socketFactory.fallback", "false"); 
         try {
             Class.forName("com.mysql.jdbc.Driver");       
-            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/nuwanadb","root","");
+            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/nuwana","root","");
             String query = "SELECT teach_income FROM teacher_pay WHERE email LIKE '"+eml.getText().trim()+"'";
             PreparedStatement statmnt = con.prepareStatement(query);
             ResultSet result = statmnt.executeQuery();               
@@ -610,11 +611,11 @@ public class Payment extends javax.swing.JFrame {
                 transport.close();
                 
                 
-                JOptionPane.showMessageDialog(rootPane, "email send succesefuly");
+                JOptionPane.showMessageDialog(rootPane, "Email send succesefuly");
             }
         } catch (Exception e) {
             e.printStackTrace(); 
-            JOptionPane.showMessageDialog(rootPane,"email not send");
+            JOptionPane.showMessageDialog(rootPane, "Email not send");
           
         }          
         
