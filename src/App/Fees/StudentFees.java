@@ -14,6 +14,8 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -37,6 +39,10 @@ public class StudentFees extends javax.swing.JFrame {
     ResultSet rs2=null;
     ResultSet rs3=null;
     
+    DefaultTableModel dtm;
+    
+    String subid;
+    String month;
     
     public StudentFees() {
         this.setUndecorated(false);
@@ -53,8 +59,8 @@ public class StudentFees extends javax.swing.JFrame {
         conn=DAC.ConnectDb();
         
     }
-
-  
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,6 +93,9 @@ public class StudentFees extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox<>();
         jTextField3 = new javax.swing.JTextField();
+        SaveBtn = new javax.swing.JButton();
+        UpdateBtn = new javax.swing.JButton();
+        DeleteBtn = new javax.swing.JButton();
         msgLabel = new javax.swing.JLabel();
         msgLabel1 = new javax.swing.JLabel();
 
@@ -163,7 +172,7 @@ public class StudentFees extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel6.setText("Student Subjects");
 
-        jTextField2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jTextField2.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel15.setText("Student ID");
@@ -209,7 +218,7 @@ public class StudentFees extends javax.swing.JFrame {
         jLabel8.setText("Student Grade");
 
         jComboBox1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
 
         jButton1.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jButton1.setText("Search");
@@ -220,51 +229,81 @@ public class StudentFees extends javax.swing.JFrame {
         });
 
         jComboBox2.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
 
         jTextField3.setEditable(false);
         jTextField3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+
+        SaveBtn.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        SaveBtn.setText("Save");
+        SaveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveBtnActionPerformed(evt);
+            }
+        });
+
+        UpdateBtn.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        UpdateBtn.setText("Update");
+        UpdateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateBtnActionPerformed(evt);
+            }
+        });
+
+        DeleteBtn.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        DeleteBtn.setText("Delete");
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField2)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(SaveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(UpdateBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(DeleteBtn)))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 4, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(jTextField3))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -277,7 +316,15 @@ public class StudentFees extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SaveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 4, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane1.addTab("Basic Details", jPanel3);
@@ -293,21 +340,17 @@ public class StudentFees extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(279, 279, 279)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(msgLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(279, 279, 279)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(91, 91, 91)
-                                .addComponent(msgLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(msgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTabbedPane1)))
-                .addContainerGap())
+                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1051, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(msgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,11 +387,58 @@ public class StudentFees extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
 
+        int i=jTable1.getSelectedRow();
+        TableModel model=jTable1.getModel();
+        jTextField9.setText(model.getValueAt(i, 0).toString());
+        jTextField3.setText(model.getValueAt(i, 2).toString());
+        
+        String month=model.getValueAt(i, 4).toString();
+          switch(month){
+              case "January":
+                  jComboBox1.setSelectedIndex(1);
+                  break;
+              case "February":
+                  jComboBox1.setSelectedIndex(2);
+                  break; 
+              case "March":
+                  jComboBox1.setSelectedIndex(3);
+                  break;
+              case "April":
+                  jComboBox1.setSelectedIndex(4);
+                  break;
+              case "May":
+                  jComboBox1.setSelectedIndex(5);
+                  break; 
+              case "June":
+                  jComboBox1.setSelectedIndex(6);
+                  break; 
+              case "July":
+                  jComboBox1.setSelectedIndex(7);
+                  break;
+              case "August":
+                  jComboBox1.setSelectedIndex(8);
+                  break; 
+              case "September":
+                  jComboBox1.setSelectedIndex(9);
+                  break; 
+              case "October":
+                  jComboBox1.setSelectedIndex(10);
+                  break; 
+              case "November":
+                  jComboBox1.setSelectedIndex(11);
+                  break; 
+              case "December":
+                  jComboBox1.setSelectedIndex(12);
+                  break;     
+          }
+          jTextField2.setText(model.getValueAt(i, 3).toString());
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         String scanid=jTextField9.getText();
+        String stgrade=jTextField3.getText();
+        String amount=jTextField2.getText();
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -383,11 +473,134 @@ public class StudentFees extends javax.swing.JFrame {
                 jComboBox2.addItem("11_maths");
                 jComboBox2.addItem("11_science");
                 jComboBox2.addItem("11_english");
+            }else if(jTextField3.getText().equals("12")){
+                jComboBox2.addItem("12_commaths");
+                jComboBox2.addItem("12_biology");
+                jComboBox2.addItem("12_chemistry");
+                jComboBox2.addItem("12_physics");
+                jComboBox2.addItem("12_sinhala");
+                jComboBox2.addItem("12_history");
+                jComboBox2.addItem("12_logic");
+                jComboBox2.addItem("12_accounting");
+                jComboBox2.addItem("12_econ");
+                jComboBox2.addItem("12_commerce");
+            }else if(jTextField3.getText().equals("13")){
+                jComboBox2.addItem("13_commaths");
+                jComboBox2.addItem("13_biology");
+                jComboBox2.addItem("13_chemistry");
+                jComboBox2.addItem("13_physics");
+                jComboBox2.addItem("13_sinhala");
+                jComboBox2.addItem("13_history");
+                jComboBox2.addItem("13_logic");
+                jComboBox2.addItem("13_accounting");
+                jComboBox2.addItem("13_econ");
+                jComboBox2.addItem("13_commerce");
+            }else if(jTextField3.getText().equals("Revision")){
+                jComboBox2.addItem("rev_commaths");
+                jComboBox2.addItem("rev_biology");
+                jComboBox2.addItem("rev_chemistry");
+                jComboBox2.addItem("rev_physics");
             }
+            
+            String sql2="SELECT * FROM fees WHERE StudentId=?";
+            
+            pst1=conn.prepareStatement(sql2);
+            pst1.setString(1, jTextField9.getText());
+            
+                ResultSet rss=pst1.executeQuery();
+                dtm = (DefaultTableModel) jTable1.getModel();
+                dtm.setRowCount(0);
+            
+                if(rss.next()){
+                    do {                        
+                        scanid=rss.getString("StudentId");
+                        subid=rss.getString("SubjectId");
+                        stgrade=rss.getString("Grade");
+                        amount=rss.getString("Amount");
+                        month=rss.getString("Month");
+                        
+                        dtm.addRow(new Object[]{scanid,subid,stgrade,amount,month});
+                    } while (rss.next());
+ 
+                }
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveBtnActionPerformed
+        
+        String scanid=jTextField9.getText();
+        String stgrade=jTextField3.getText();
+        String amount=jTextField2.getText();
+        
+        try {
+            String sql="INSERT INTO fees(StudentId,SubjectId,Grade,Amount,Month)"
+                    + "VALUES(?,?,?,?,?)";
+                 
+            pst=conn.prepareStatement(sql);
+            pst.setString(1, scanid);
+            String subid=jComboBox2.getSelectedItem().toString();
+            pst.setString(2, subid);
+            pst.setString(3, stgrade);
+            pst.setString(4, amount);
+            String month=jComboBox1.getSelectedItem().toString();
+            pst.setString(5, month);
+            pst.executeUpdate();
+            
+             msgLabel.setText("Successfully Added Data.");              
+           
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_SaveBtnActionPerformed
+
+    private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
+        
+        String amount=jTextField2.getText();
+        
+        try {
+            String sqlup="UPDATE fees SET Amount=?,Month=? WHERE StudentId=? AND SubjectId=?";
+            
+            pst2=conn.prepareStatement(sqlup);
+            pst2.setString(1, amount);
+            String month=jComboBox1.getSelectedItem().toString();
+            pst2.setString(2, month);
+            pst2.setString(3, jTextField9.getText());
+            String subid=jComboBox2.getSelectedItem().toString();
+            pst2.setString(4, subid);
+            pst2.executeUpdate();
+            
+            msgLabel.setText("Successfully Updated!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_UpdateBtnActionPerformed
+
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
+        
+        String scanid=jTextField9.getText();
+        String stgrade=jTextField3.getText();
+        String amount=jTextField2.getText();
+        
+        int p=JOptionPane.showConfirmDialog(rootPane, "Do you realy want to delete data?","Delete Cofirmation",JOptionPane.YES_NO_OPTION);
+        if(p==0){
+           try {
+            String sqldel="DELETE FROM fees WHERE StudentId=? AND SubjectId=?";
+            
+            pst3=conn.prepareStatement(sqldel);
+            pst3.setString(1, scanid);
+            pst3.setString(2, subid);
+            pst3.executeUpdate();
+            
+            msgLabel.setText("Successfully Deleted!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        } 
+        }
+        
+    }//GEN-LAST:event_DeleteBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -425,6 +638,9 @@ public class StudentFees extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DeleteBtn;
+    private javax.swing.JButton SaveBtn;
+    private javax.swing.JButton UpdateBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
