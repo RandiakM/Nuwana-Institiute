@@ -10,12 +10,18 @@ import App.DAC;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DateFormat;
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -25,6 +31,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
+import java.text.*;
+import java.awt.print.*;
 
 /**
  *
@@ -35,7 +43,7 @@ public class BarcodeAttendence extends javax.swing.JFrame {
     /**
      * Creates new form BarcodeRead
      */
-    DefaultTableModel dtm;
+    DefaultTableModel dtm=new DefaultTableModel();
     
     Connection conn=null;
     ResultSet rs=null;
@@ -80,6 +88,7 @@ public class BarcodeAttendence extends javax.swing.JFrame {
         SearchBtn = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         msgLable = new javax.swing.JLabel();
+        ExcelBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -190,7 +199,7 @@ public class BarcodeAttendence extends javax.swing.JFrame {
         });
 
         jLabel19.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
-        jLabel19.setText("Last Pay Date");
+        jLabel19.setText("Last Pay Month");
 
         jTextField11.setEditable(false);
         jTextField11.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
@@ -240,6 +249,14 @@ public class BarcodeAttendence extends javax.swing.JFrame {
         msgLable.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         msgLable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        ExcelBtn.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        ExcelBtn.setText("Upload to Excel Sheet");
+        ExcelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcelBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -267,7 +284,8 @@ public class BarcodeAttendence extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(SearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(SubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(msgLable, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(msgLable, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ExcelBtn, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1)
                 .addContainerGap())
@@ -298,6 +316,8 @@ public class BarcodeAttendence extends javax.swing.JFrame {
                         .addComponent(SubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
                         .addComponent(msgLable, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ExcelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE))
                 .addContainerGap())
@@ -454,6 +474,50 @@ public class BarcodeAttendence extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SubmitBtnActionPerformed
 
+    private DefaultTableModel getdata(){
+        dtm.addColumn("Student ID");
+        dtm.addColumn("Subject ID");
+        dtm.addColumn("Attend Date");
+        dtm.addColumn("Last Pay Date");
+        
+        String sqlex="SELECT * FROM student_attendence";
+        
+        try {
+            pst1=conn.prepareStatement(sqlex);
+            ResultSet rs1=pst1.executeQuery(sqlex);
+            while(rs1.next()){
+                String scanid=rs1.getString(2);
+                String subid=rs1.getString(3);
+                String atdate=rs1.getString(4);
+                String payday=rs1.getString(5);
+                
+                String[] rawdata={scanid,subid,atdate,payday};
+                dtm.addRow(rawdata);
+            }
+            return dtm;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+        return  null;
+    }
+
+    
+    private void ExcelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcelBtnActionPerformed
+        
+        jTable1.setModel(getdata());
+        
+        MessageFormat header=new MessageFormat("Report Print");
+        
+        MessageFormat footer=new MessageFormat("Page{0,number,integer}");
+        
+        try {
+            jTable1.print(JTable.PrintMode.NORMAL, header, footer);
+        } catch (java.awt.print.PrinterException e) {
+            System.err.format("Can not print", e.getMessage());
+        }
+
+    }//GEN-LAST:event_ExcelBtnActionPerformed
+
 //    public static TableCellRenderer createCellRenderer() {
 //    return new DefaultTableCellRenderer() {
 //        @Override
@@ -506,8 +570,6 @@ public class BarcodeAttendence extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -518,6 +580,7 @@ public class BarcodeAttendence extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ExcelBtn;
     private javax.swing.JButton SearchBtn;
     private javax.swing.JButton SubmitBtn;
     private javax.swing.JComboBox<String> jComboBox1;

@@ -256,6 +256,7 @@
                               </Group>
                           </Group>
                           <Component id="msgLable" min="-2" pref="330" max="-2" attributes="0"/>
+                          <Component id="ExcelBtn" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" max="32767" attributes="0"/>
@@ -293,6 +294,8 @@
                               <Component id="SubmitBtn" min="-2" pref="46" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="msgLable" min="-2" pref="45" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="ExcelBtn" min="-2" pref="46" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane1" pref="473" max="32767" attributes="0"/>
@@ -358,7 +361,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Century Gothic" size="22" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Last Pay Date"/>
+                <Property name="text" type="java.lang.String" value="Last Pay Month"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField11">
@@ -447,6 +450,17 @@
                   </Border>
                 </Property>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="ExcelBtn">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Century Gothic" size="22" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Upload to Excel Sheet"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExcelBtnActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

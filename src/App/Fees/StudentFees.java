@@ -173,6 +173,11 @@ public class StudentFees extends javax.swing.JFrame {
         jLabel6.setText("Student Subjects");
 
         jTextField2.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 22)); // NOI18N
         jLabel15.setText("Student ID");
@@ -601,6 +606,14 @@ public class StudentFees extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_DeleteBtnActionPerformed
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        
+        char c=evt.getKeyChar();
+        if(Character.isLetter(c)&&!evt.isAltDown()){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField2KeyTyped
 
     /**
      * @param args the command line arguments
