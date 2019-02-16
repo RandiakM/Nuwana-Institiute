@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package App.ClerkPages;
+package App.Common;
 
-import App.AdminPages.*;
 import App.AdminPages.*;
 import App.ClerkPages.*;
 import App.AdminPages.*;
@@ -1013,8 +1012,6 @@ public class RegisterNewTeacher extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(RegisterNewTeacher.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         

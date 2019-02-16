@@ -12,11 +12,11 @@ import App.ClerkPages.*;
 //import App.Teacher.AddTeacher;
 //import App.Teacher.ViewTeacher;
 import App.AdminPages.AdminRegistrations;
-import App.AdminPages.RegisterNewLabour;
-import App.AdminPages.RegisterNewStudent;
-import App.AdminPages.RegisterNewTeacher;
+import App.Common.RegisterNewLabour;
+import App.Common.RegisterNewStudent;
+import App.Common.RegisterNewTeacher;
 import App.AdminPages.RgisterNewClerk;
-//import App.ClerkPages.ClerkProfileOld;
+import App.Common.*;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
@@ -136,7 +136,7 @@ public class HomeClerk extends javax.swing.JFrame {
 
         CmbBox_UserType.setBackground(new java.awt.Color(97, 212, 195));
         CmbBox_UserType.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        CmbBox_UserType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Clerk", "Teacher", "Labour", "Student" }));
+        CmbBox_UserType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Teacher", "Labour", "Student" }));
         CmbBox_UserType.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CmbBox_UserType.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
@@ -465,12 +465,10 @@ public class HomeClerk extends javax.swing.JFrame {
         if(CmbBox_UserType.getSelectedIndex()==0){
             JOptionPane.showMessageDialog(rootPane, "Please Select Registration Type!");
         }else if(CmbBox_UserType.getSelectedIndex()==1){
-            new RgisterNewClerk().setVisible(true);
-        }else if(CmbBox_UserType.getSelectedIndex()==2){
             new RegisterNewTeacher().setVisible(true);
-        }else if(CmbBox_UserType.getSelectedIndex()==3){
+        }else if(CmbBox_UserType.getSelectedIndex()==2){
             new RegisterNewLabour().setVisible(true);
-        }else if(CmbBox_UserType.getSelectedIndex()==4){
+        }else if(CmbBox_UserType.getSelectedIndex()==3){
             new RegisterNewStudent().setVisible(true);
         }
     }//GEN-LAST:event_CmbBox_UserTypeActionPerformed
@@ -500,16 +498,14 @@ public class HomeClerk extends javax.swing.JFrame {
 
     private void CmbBox_ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbBox_ViewActionPerformed
         if(CmbBox_View.getSelectedIndex()==0){
-            JOptionPane.showMessageDialog(rootPane, "Please Select View & Delete User Type!");
+            JOptionPane.showMessageDialog(rootPane, "Please Select User Type!");
         }else if(CmbBox_View.getSelectedIndex()==1){
-            new ViewAndDeleteAdmins().setVisible(true);
-        }else if(CmbBox_View.getSelectedIndex()==2){
             new ViewAndDeleteClerks().setVisible(true);
-        }else if(CmbBox_View.getSelectedIndex()==3){
+        }else if(CmbBox_View.getSelectedIndex()==2){
             new ViewAndDeleteTeachers().setVisible(true);
-        }else if(CmbBox_View.getSelectedIndex()==4){
+        }else if(CmbBox_View.getSelectedIndex()==3){
             new RegisterNewLabour().setVisible(true);
-        }else if(CmbBox_View.getSelectedIndex()==5){
+        }else if(CmbBox_View.getSelectedIndex()==4){
             new RegisterNewStudent().setVisible(true);
         }
     }//GEN-LAST:event_CmbBox_ViewActionPerformed
